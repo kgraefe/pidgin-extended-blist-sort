@@ -1,0 +1,21 @@
+Pidgin Extended Buddy List Sort Plugin
+======================================
+
+To install the plugin, simply run the included install script which copies the contents of the
+archive to your .purple user dir (usually "~/.purple").
+
+Have fun. :o)
+
+Please note: You have to build the plugin from source in order to get a system wide installation!
+
+--------------------------------------
+
+Pidgin Extended Buddy List Sort Plugin
+======================================
+
+Sie müssen einfach das mitgelieferte Installationsskript ausführen, dass einfach den Inhalt dieses
+Archivs in das eigene .purple-Verzeichnis kopiert.
+
+Viel Spaß. :o)
+
+Achtung: Sie müssen das Plugin aus dem Quellcode kompilieren um eine systemweite Installation zu bekommen!
