@@ -1,0 +1,123 @@
+#
+# Makefile.mingw
+#
+#
+
+#
+# PATHS
+#
+
+EXT_BLIST_SORT_TOP :=		..
+-include $(EXT_BLIST_SORT_TOP)/local.mak
+PIDGIN_TREE_TOP ?=		../../../..
+include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak
+
+EXT_BLIST_SORT_VERSION := $(shell cat ${EXT_BLIST_SORT_TOP}/VERSION)
+
+##
+## VARIABLE DEFINITIONS
+##
+
+EXT_BLIST_SORT = extended_blist_sort
+
+# Compiler Options
+
+#CFLAGS = 
+
+DEFINES = -DEXT_BLIST_SORT_VERSION=\"$(EXT_BLIST_SORT_VERSION)\" -DGETTEXT_PACKAGE=\"$(EXT_BLIST_SORT)\" -DHAVE_CONFIG_H
+
+#LDFLAGS = 
+
+#-mwindows
+
+##
+## INCLUDE PATHS
+##
+
+INCLUDE_PATHS +=	-I. \
+			-I.. \
+			-I$(PIDGIN_TREE_TOP) \
+                        -I$(PURPLE_TOP) \
+                        -I$(PURPLE_TOP)/win32 \
+                        -I$(PIDGIN_TOP) \
+                        -I$(PIDGIN_TOP)/win32 \
+                        -I$(GTK_TOP)/include \
+                        -I$(GTK_TOP)/include/gtk-2.0 \
+                        -I$(GTK_TOP)/include/glib-2.0 \
+                        -I$(GTK_TOP)/include/pango-1.0 \
+                        -I$(GTK_TOP)/include/atk-1.0 \
+                        -I$(GTK_TOP)/include/freetype2 \
+                        -I$(GTK_TOP)/lib/glib-2.0/include \
+                        -I$(GTK_TOP)/lib/gtk-2.0/include \
+                        -I$(PIDGIN_TREE_TOP)
+
+LIB_PATHS =             \
+                        -L$(PURPLE_TOP) \
+                        -L$(PIDGIN_TOP) \
+                        -L$(GTK_TOP)/lib
+
+
+
+##
+##  SOURCES, OBJECTS
+##
+
+EXT_BLIST_SORT_SRC =	\
+	extended_blist_sort.c
+
+
+EXT_BLIST_SORT_OBJ = $(EXT_BLIST_SORT_SRC:%.c=%.o)
+
+##
+## LIBRARIES
+##
+
+PLUGIN_LIBS = \
+        -lgtk-win32-2.0 \
+        -lglib-2.0 \
+        -lpango-1.0 \
+        -lpangoft2-1.0 \
+        -lgdk-win32-2.0 \
+        -lgdk_pixbuf-2.0 \
+        -lgobject-2.0 \
+        -lws2_32 \
+        -lintl \
+        -lpurple \
+        -lpidgin
+
+
+include $(PIDGIN_COMMON_RULES)
+
+##
+## TARGET DEFINITIONS
+##
+
+.PHONY: all clean install
+
+all: $(EXT_BLIST_SORT).dll
+
+install: all $(PIDGIN_INSTALL_PLUGINS_DIR)
+	cp $(EXT_BLIST_SORT).dll $(PIDGIN_INSTALL_PLUGINS_DIR)
+
+$(EXT_BLIST_SORT_OBJ): $(EXT_BLIST_SORT_TOP)/config.h $(PURPLE_VERSION_H)
+
+$(EXT_BLIST_SORT_TOP)/config.h: $(EXT_BLIST_SORT_TOP)/config.h.mingw
+	$(MAKE) -C $(EXT_BLIST_SORT_TOP) -f Makefile.mingw config.h
+
+##
+## BUILD DLL
+##
+
+$(EXT_BLIST_SORT).dll: $(PIDGIN_DLL).a $(EXT_BLIST_SORT_OBJ)
+	$(CC) -shared $(EXT_BLIST_SORT_OBJ) $(LIB_PATHS) $(PLUGIN_LIBS) $(DLL_LD_FLAGS) -o $(EXT_BLIST_SORT).dll
+
+
+##
+## CLEAN RULES
+##
+
+clean:
+	rm -f *.o
+	rm -f $(EXT_BLIST_SORT).dll
+
+include $(PIDGIN_COMMON_TARGETS)

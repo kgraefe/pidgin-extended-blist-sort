@@ -1,0 +1,43 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for win32 (mingw)
+#
+
+#
+# PATHS
+#
+
+EXT_BLIST_SORT_SRC :=		./src
+EXT_BLIST_SORT_PO :=		./po
+
+EXT_BLIST_SORT_TOP := .
+-include $(EXT_BLIST_SORT_TOP)/local.mak
+
+PIDGIN_TREE_TOP ?=		../../..
+include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak
+
+##
+## VARIABLE DEFINITIONS
+##
+
+EXT_BLIST_SORT_VERSION := $(shell cat ./VERSION)
+
+PIDGIN_VERSION := $(shell cat $(PIDGIN_TREE_TOP)/VERSION)
+
+.PHONY: all install installer clean
+
+all:
+	$(MAKE) -C $(EXT_BLIST_SORT_SRC) -f Makefile.mingw
+	$(MAKE) -C $(EXT_BLIST_SORT_PO) -f Makefile.mingw
+
+config.h: config.h.mingw
+	cp config.h.mingw config.h
+
+install: all
+	$(MAKE) -C $(EXT_BLIST_SORT_SRC) -f Makefile.mingw install
+	$(MAKE) -C $(EXT_BLIST_SORT_PO) -f Makefile.mingw install
+
+clean:
+	$(MAKE) -C $(EXT_BLIST_SORT_SRC) -f Makefile.mingw clean
+	rm -f config.h
