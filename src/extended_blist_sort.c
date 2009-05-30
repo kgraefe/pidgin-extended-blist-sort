@@ -664,9 +664,19 @@ static PurplePluginInfo info = {
 };
 
 static void init_plugin(PurplePlugin *plugin) {
+	const char *str = "Extended BList Sort";
+	gchar *plugins_locale_dir;
+
 #ifdef ENABLE_NLS
-	bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
+	plugins_locale_dir = g_build_filename(purple_user_dir(), "locale", NULL);
+
+	bindtextdomain(GETTEXT_PACKAGE, plugins_locale_dir);
+	if(str == _(str)) {
+		bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
+	}
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+
+	g_free(plugins_locale_dir);
 #endif /* ENABLE_NLS */
 
 	info.name        = _("Extended BList Sort");
