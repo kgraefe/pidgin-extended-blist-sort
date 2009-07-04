@@ -33,6 +33,8 @@
 
 #include <gtkblist.h>
 #include <gtkdebug.h>
+#include <gtkutils.h>
+#include <gtkplugin.h>
 
 #include <core.h>
 // }
@@ -117,8 +119,7 @@ enum sort_methods {
 	SORT_METHOD_PROTOCOL,
 	SORT_METHOD_PRIORITY,
 	SORT_METHOD_ONOFFLINETIME,
-	SORT_METHOD_LOGSIZE,
-	SORT_METHOD_RELOGSIZE
+	SORT_METHOD_LOGSIZE
 };
 
 enum priorities{
@@ -253,8 +254,11 @@ static gboolean plugin_load(PurplePlugin *plugin) {
 	pidgin_blist_update_sort_methods();
 	
 	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort1", option_changed_cb, NULL);
+	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort1_reverse", option_changed_cb, NULL);
 	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort2", option_changed_cb, NULL);
+	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort2_reverse", option_changed_cb, NULL);
 	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort3", option_changed_cb, NULL);
+	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort3_reverse", option_changed_cb, NULL);
 	
 	purple_signal_connect(purple_get_core(), "quitting", plugin, reset_sort_method, NULL);
 	purple_signal_connect(purple_blist_get_handle(), "blist-node-extended-menu", plugin, PURPLE_CALLBACK(extended_buddy_menu_cb), NULL);
@@ -490,17 +494,21 @@ static gint compare_logsize(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	return 0;
 }
 
-static gint compare(gint sort_method, PurpleBlistNode *node1, PurpleBlistNode *node2) {
-	if (sort_method == SORT_METHOD_NOTHING) return compare_nothing(node1, node2);
-	if (sort_method == SORT_METHOD_NAME) return compare_name(node1, node2);
-	if (sort_method == SORT_METHOD_STATUS) return compare_status(node1, node2);
-	if (sort_method == SORT_METHOD_ONOFFLINE) return compare_onoffline(node1, node2);
-	if (sort_method == SORT_METHOD_PROTOCOL) return compare_protocol(node1, node2);
-	if (sort_method == SORT_METHOD_PRIORITY) return compare_priority(node1, node2);
-	if (sort_method == SORT_METHOD_ONOFFLINETIME) return compare_onofflinetime(node1, node2);
-	if (sort_method == SORT_METHOD_LOGSIZE) return compare_logsize(node1, node2);
-	if (sort_method == SORT_METHOD_RELOGSIZE) return (0 - compare_logsize(node1, node2));
-	return 0;
+static gint compare(gint sort_method, gboolean reverse, PurpleBlistNode *node1, PurpleBlistNode *node2) {
+	gint ret = 0;
+	
+	if (sort_method == SORT_METHOD_NOTHING) ret = compare_nothing(node1, node2);
+	if (sort_method == SORT_METHOD_NAME) ret = compare_name(node1, node2);
+	if (sort_method == SORT_METHOD_STATUS) ret = compare_status(node1, node2);
+	if (sort_method == SORT_METHOD_ONOFFLINE) ret = compare_onoffline(node1, node2);
+	if (sort_method == SORT_METHOD_PROTOCOL) ret = compare_protocol(node1, node2);
+	if (sort_method == SORT_METHOD_PRIORITY) ret = compare_priority(node1, node2);
+	if (sort_method == SORT_METHOD_ONOFFLINETIME) ret = compare_onofflinetime(node1, node2);
+	if (sort_method == SORT_METHOD_LOGSIZE) ret = compare_logsize(node1, node2);
+	
+	if(reverse) ret *= (-1);
+	
+	return ret;
 }
 
 static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *blist, GtkTreeIter group, GtkTreeIter *cur, GtkTreeIter *ret) {
@@ -530,9 +538,9 @@ static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *b
 		n = g_value_get_pointer(&val);
 
 		// vergleichen...
-		cmp1=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"), node, n);
-		cmp2=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"), node, n);
-		cmp3=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"), node, n);
+		cmp1=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse"), node, n);
+		cmp2=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse"), node, n);
+		cmp3=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse"), node, n);
 
 		// Kommt der Knoten vor den aktuellen?
 		if(cmp1 < 0 ||
@@ -566,61 +574,209 @@ static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *b
 	
 }
 
-static PurplePluginPrefFrame *get_plugin_pref_frame(PurplePlugin *plugin) {
-	PurplePluginPrefFrame *frame;
-	PurplePluginPref *ppref;
-	
-	frame = purple_plugin_pref_frame_new();
-	
-	ppref = purple_plugin_pref_new_with_label(_("Choose your way to sort the Buddy List:"));
-	purple_plugin_pref_frame_add(frame, ppref);
-	
-	ppref = purple_plugin_pref_new_with_name_and_label(PLUGIN_PREFS_PREFIX "/sort1", _("First:"));
-	purple_plugin_pref_set_type(ppref, PURPLE_PLUGIN_PREF_CHOICE);
-	purple_plugin_pref_add_choice(ppref, _("(Nothing)"), GINT_TO_POINTER(SORT_METHOD_NOTHING));
-	purple_plugin_pref_add_choice(ppref, _("Log Size"), GINT_TO_POINTER(SORT_METHOD_LOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Reverse Log Size"), GINT_TO_POINTER(SORT_METHOD_RELOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Name"), GINT_TO_POINTER(SORT_METHOD_NAME));
-	purple_plugin_pref_add_choice(ppref, _("Online/Offline"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINE));
-	purple_plugin_pref_add_choice(ppref, _("On-/Offline Time"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINETIME));
-	purple_plugin_pref_add_choice(ppref, _("Priority"), GINT_TO_POINTER(SORT_METHOD_PRIORITY));
-	purple_plugin_pref_add_choice(ppref, _("Protocol"), GINT_TO_POINTER(SORT_METHOD_PROTOCOL));
-	purple_plugin_pref_add_choice(ppref, _("Status"), GINT_TO_POINTER(SORT_METHOD_STATUS));
-	purple_plugin_pref_frame_add(frame, ppref);
-	
-	ppref = purple_plugin_pref_new_with_name_and_label(PLUGIN_PREFS_PREFIX "/sort2", _("Second:"));
-	purple_plugin_pref_set_type(ppref, PURPLE_PLUGIN_PREF_CHOICE);
-	purple_plugin_pref_add_choice(ppref, _("(Nothing)"), GINT_TO_POINTER(SORT_METHOD_NOTHING));
-	purple_plugin_pref_add_choice(ppref, _("Log Size"), GINT_TO_POINTER(SORT_METHOD_LOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Reverse Log Size"), GINT_TO_POINTER(SORT_METHOD_RELOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Name"), GINT_TO_POINTER(SORT_METHOD_NAME));
-	purple_plugin_pref_add_choice(ppref, _("Online/Offline"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINE));
-	purple_plugin_pref_add_choice(ppref, _("On-/Offline Time"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINETIME));
-	purple_plugin_pref_add_choice(ppref, _("Priority"), GINT_TO_POINTER(SORT_METHOD_PRIORITY));
-	purple_plugin_pref_add_choice(ppref, _("Protocol"), GINT_TO_POINTER(SORT_METHOD_PROTOCOL));
-	purple_plugin_pref_add_choice(ppref, _("Status"), GINT_TO_POINTER(SORT_METHOD_STATUS));
-	purple_plugin_pref_frame_add(frame, ppref);
-	
-	ppref = purple_plugin_pref_new_with_name_and_label(PLUGIN_PREFS_PREFIX "/sort3", _("Last:"));
-	purple_plugin_pref_set_type(ppref, PURPLE_PLUGIN_PREF_CHOICE);
-	purple_plugin_pref_add_choice(ppref, _("(Nothing)"), GINT_TO_POINTER(SORT_METHOD_NOTHING));
-	purple_plugin_pref_add_choice(ppref, _("Log Size"), GINT_TO_POINTER(SORT_METHOD_LOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Reverse Log Size"), GINT_TO_POINTER(SORT_METHOD_RELOGSIZE));
-	purple_plugin_pref_add_choice(ppref, _("Name"), GINT_TO_POINTER(SORT_METHOD_NAME));
-	purple_plugin_pref_add_choice(ppref, _("Online/Offline"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINE));
-	purple_plugin_pref_add_choice(ppref, _("On-/Offline Time"), GINT_TO_POINTER(SORT_METHOD_ONOFFLINETIME));
-	purple_plugin_pref_add_choice(ppref, _("Priority"), GINT_TO_POINTER(SORT_METHOD_PRIORITY));
-	purple_plugin_pref_add_choice(ppref, _("Protocol"), GINT_TO_POINTER(SORT_METHOD_PROTOCOL));
-	purple_plugin_pref_add_choice(ppref, _("Status"), GINT_TO_POINTER(SORT_METHOD_STATUS));
-	purple_plugin_pref_frame_add(frame, ppref);
-	
-	return frame;
+/*** Einstellungen ***/
+enum pref_columns {
+	PREF_LIST_COL_LABEL,
+	PREF_LIST_COL_VALUE
+};
+
+static void toggle_cb(GtkWidget *widget, gpointer data) {
+	gboolean value;
+	gchar *pref;
+
+	value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+	pref = (gchar *) data;
+
+	purple_prefs_set_bool(pref, value);
 }
 
-static PurplePluginUiInfo prefs_info = {
-	get_plugin_pref_frame,
+static void combo_changed_cb(GtkWidget *widget, gpointer data) {
+	GtkTreeModel *model = NULL;
+	GtkTreeIter iter;
+	
+	gint value;
+	gchar *pref;
+	
+	gtk_combo_box_get_active_iter(GTK_COMBO_BOX(widget), &iter);
+	model = gtk_combo_box_get_model(GTK_COMBO_BOX(widget));
+	
+	gtk_tree_model_get(model, &iter, PREF_LIST_COL_VALUE, &value, -1);
+	pref = (gchar *) data;
+	
+	purple_prefs_set_int(pref, value);
+}
+
+static gboolean get_iter_by_sort_method_id(GtkTreeModel *model, gint id, GtkTreeIter *iter) {
+	gint current_id;
+	
+	if(!gtk_tree_model_get_iter_first(model, iter)) return FALSE;
+	while(iter) {
+		gtk_tree_model_get(model, iter, PREF_LIST_COL_VALUE, &current_id, -1);
+		if(id == current_id) {
+			return TRUE;
+		}
+		gtk_tree_model_iter_next(model, iter);
+	}
+	return FALSE;
+}
+
+static GtkWidget *get_pref_frame(PurplePlugin *plugin) {
+	GtkWidget *ret = NULL;
+	GtkWidget *label = NULL;
+	GtkWidget *table = NULL;
+	GtkWidget *combo = NULL;
+	GtkWidget *toggle = NULL;
+	GtkCellRenderer *renderer = NULL;
+	
+	GtkListStore *model = NULL;
+	GtkTreeIter iter;
+	
+	gchar *markup;
+	gint current_row = 0;
+	
+	model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("(Nothing)"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_NOTHING,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Log Size"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_LOGSIZE,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Name"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_NAME,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Online/Offline"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_ONOFFLINE,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("On-/Offline Time"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_ONOFFLINETIME,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Priority"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_PRIORITY,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Protocol"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_PROTOCOL,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Status"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_STATUS,
+				-1);
+	
+	ret = gtk_vbox_new(FALSE, 18);
+	gtk_container_set_border_width(GTK_CONTAINER(ret), 12);
+	
+	label = gtk_label_new(NULL);
+	markup = g_markup_printf_escaped("<span weight=\"bold\">%s</span>", _("Choose your way to sort the Buddy List:"));
+	gtk_label_set_markup(GTK_LABEL(label), markup);
+	gtk_container_add(GTK_CONTAINER(ret), label);
+	
+	table = gtk_table_new(3, 2, FALSE);
+	gtk_table_set_row_spacings(GTK_TABLE(table), 5);
+	gtk_table_set_col_spacings(GTK_TABLE(table), 5);
+	gtk_container_add(GTK_CONTAINER(ret), table);
+	
+	current_row = 0;
+	
+	/* erste Sortierung */
+	label = gtk_label_new(_("First:"));
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
+	
+	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
+	renderer = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
+	
+	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"), &iter)) {
+		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
+	}
+	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort1");
+	
+	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
+	
+	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse"));
+	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort1_reverse");
+	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
+	
+	current_row+=2;
+	
+	/* zweite Sortierung */
+	label = gtk_label_new(_("Second:"));
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
+	
+	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
+	renderer = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
+	
+	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"), &iter)) {
+		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
+	}
+	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort2");
+	
+	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
+	
+	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse"));
+	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort2_reverse");
+	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
+	
+	current_row+=2;
+	
+	/* dritte Sortierung */
+	label = gtk_label_new(_("Last:"));
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
+	
+	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
+	renderer = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
+	
+	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"), &iter)) {
+		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
+	}
+	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort3");
+	
+	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
+	
+	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse"));
+	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort3_reverse");
+	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
+	
+	current_row+=2;
+	
+	return ret;
+}
+
+static PidginPluginUiInfo ui_info = {
+	get_pref_frame,
 	0,   /* page_num (Reserved) */
-	NULL, /* frame (Reserved) */
 	/* Padding */
 	NULL,
 	NULL,
@@ -633,18 +789,18 @@ static PurplePluginInfo info = {
 	PURPLE_MAJOR_VERSION,
 	PURPLE_MINOR_VERSION,
 	PURPLE_PLUGIN_STANDARD,								/**< type           */
-	NULL,												/**< ui_requirement */
+	PIDGIN_PLUGIN_TYPE,									/**< ui_requirement */
 	0,													/**< flags          */
 	NULL,												/**< dependencies   */
 	PURPLE_PRIORITY_DEFAULT,							/**< priority       */
 
-	PLUGIN_ID,				/**< id             */
+	PLUGIN_ID,											/**< id             */
 	NULL,												/**< name           */
 	PLUGIN_VERSION,										/**< version        */
 	NULL,												/**  summary        */
 				
 	NULL,												/**  description    */
-	PLUGIN_AUTHOR,			/**< author         */
+	PLUGIN_AUTHOR,										/**< author         */
 	PLUGIN_WEBSITE,
 														/**< homepage       */
 
@@ -652,10 +808,11 @@ static PurplePluginInfo info = {
 	plugin_unload,										/**< unload         */
 	NULL,												/**< destroy        */
 
-	NULL,												/**< ui_info        */
+	&ui_info,											/**< ui_info        */
 	NULL,												/**< extra_info     */
-	&prefs_info,										/**< prefs_info     */
+	NULL,												/**< prefs_info     */
 	NULL,												/**< actions        */
+	
 	/* padding */
 	NULL,
 	NULL,
@@ -685,8 +842,11 @@ static void init_plugin(PurplePlugin *plugin) {
 
 	purple_prefs_add_none(PLUGIN_PREFS_PREFIX);
 	purple_prefs_add_int(PLUGIN_PREFS_PREFIX "/sort1", 0);
+	purple_prefs_add_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse", FALSE);
 	purple_prefs_add_int(PLUGIN_PREFS_PREFIX "/sort2", 0);
+	purple_prefs_add_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse", FALSE);
 	purple_prefs_add_int(PLUGIN_PREFS_PREFIX "/sort3", 0);
+	purple_prefs_add_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse", FALSE);
 	purple_prefs_add_string(PLUGIN_PREFS_PREFIX "/old_sort_method", "");
 }
 
