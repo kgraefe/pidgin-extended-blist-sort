@@ -13,8 +13,8 @@ Please note: You have to build the plugin from source in order to get a system w
 Pidgin Extended Buddy List Sort Plugin
 ======================================
 
-Sie müssen einfach das mitgelieferte Installationsskript ausführen, dass einfach den Inhalt dieses
-Archivs in das eigene .purple-Verzeichnis kopiert.
+Um das Plugin zu installieren, führen Sie das mitgelieferte Installationsskript aus, welches den Inhalt dieses
+Archivs in das .purple-Verzeichnis des Benutzers kopiert.
 
 Viel Spaß. :o)
 

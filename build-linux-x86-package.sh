@@ -1,6 +1,6 @@
 #!/bin/bash
 make clean && \
-make  && \
+make && \
 PROJECT=extended_blist_sort && \
 DIR=${PROJECT}-`cat VERSION`-linux-x86 && \
 mkdir -p ${DIR} && \

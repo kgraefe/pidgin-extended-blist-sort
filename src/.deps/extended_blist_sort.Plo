@@ -400,6 +400,12 @@ extended_blist_sort.lo: extended_blist_sort.c ../config.h internal.h \
   /usr/local/include/libpurple/certificate.h \
   /usr/local/include/pidgin/gtkdebug.h \
   /usr/local/include/libpurple/debug.h \
+  /usr/local/include/pidgin/gtkutils.h \
+  /usr/local/include/pidgin/gtkconv.h \
+  /usr/local/include/libpurple/conversation.h \
+  /usr/local/include/pidgin/gtkconvwin.h \
+  /usr/local/include/libpurple/prpl.h /usr/local/include/libpurple/util.h \
+  /usr/local/include/pidgin/gtkplugin.h \
   /usr/local/include/libpurple/core.h
 
 ../config.h:
@@ -1337,5 +1343,19 @@ internal.h:
 /usr/local/include/pidgin/gtkdebug.h:
 
 /usr/local/include/libpurple/debug.h:
+
+/usr/local/include/pidgin/gtkutils.h:
+
+/usr/local/include/pidgin/gtkconv.h:
+
+/usr/local/include/libpurple/conversation.h:
+
+/usr/local/include/pidgin/gtkconvwin.h:
+
+/usr/local/include/libpurple/prpl.h:
+
+/usr/local/include/libpurple/util.h:
+
+/usr/local/include/pidgin/gtkplugin.h:
 
 /usr/local/include/libpurple/core.h:
