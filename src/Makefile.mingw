@@ -18,7 +18,7 @@ EXT_BLIST_SORT_VERSION := $(shell cat ${EXT_BLIST_SORT_TOP}/VERSION)
 ## VARIABLE DEFINITIONS
 ##
 
-EXT_BLIST_SORT = extended_blist_sort
+EXT_BLIST_SORT = pidgin-extended-blist-sort
 
 # Compiler Options
 

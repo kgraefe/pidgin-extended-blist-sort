@@ -1,0 +1,13 @@
+Source: pidgin-extended-blist-sort
+Section: net
+Priority: extra
+Maintainer: Konrad Gräfe <konradgraefe@aol.com>
+Build-Depends: debhelper (>= 7), autotools-dev, pidgin-dev (>= 2.5.2), intltool
+Standards-Version: 3.8.1
+Homepage: http://freakazoid.teamblind.de/2008/12/13/pidgin-extended-buddy-list-sort-plugin/
+
+Package: pidgin-extended-blist-sort
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Pidgin Extended BList Sort
+ This Plugin allows you to sort your buddy list more flexible than Pidgin does.
