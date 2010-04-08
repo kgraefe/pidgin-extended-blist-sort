@@ -119,7 +119,8 @@ enum sort_methods {
 	SORT_METHOD_PROTOCOL,
 	SORT_METHOD_PRIORITY,
 	SORT_METHOD_ONOFFLINETIME,
-	SORT_METHOD_LOGSIZE
+	SORT_METHOD_LOGSIZE,
+	SORT_METHOD_ACCOUNT
 };
 
 enum priorities{
@@ -494,6 +495,42 @@ static gint compare_logsize(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	return 0;
 }
 
+static gint compare_account(PurpleBlistNode *node1, PurpleBlistNode *node2) {
+	GList *cur;
+	PurpleAccount *acc1, *acc2, *account;
+
+	if(!node1 || !node2) return 0;
+
+	if(PURPLE_BLIST_NODE_IS_CHAT(node1)) {
+		acc1 = ((PurpleChat *)node1)->account;
+	} else if(PURPLE_BLIST_NODE_IS_BUDDY(node1)) {
+		acc1 = ((PurpleBuddy *)node1)->account;
+	} else if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
+		acc1 = (purple_contact_get_priority_buddy((PurpleContact *)node1))->account;
+	}
+
+	if(PURPLE_BLIST_NODE_IS_CHAT(node2)) {
+		acc2 = ((PurpleChat *)node2)->account;
+	} else if(PURPLE_BLIST_NODE_IS_BUDDY(node2)) {
+		acc2 = ((PurpleBuddy *)node2)->account;
+	} else if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
+		acc2 = (purple_contact_get_priority_buddy((PurpleContact *)node2))->account;
+	}
+
+	for(cur = purple_accounts_get_all(); cur; cur = cur->next) {
+		account = cur->data;
+		if(account == acc1 && account == acc2) {
+			return 0;
+		} else if(account == acc1) {
+			return -1;
+		} else if(account == acc2) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 static gint compare(gint sort_method, gboolean reverse, PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	gint ret = 0;
 	
@@ -505,6 +542,7 @@ static gint compare(gint sort_method, gboolean reverse, PurpleBlistNode *node1, 
 	if (sort_method == SORT_METHOD_PRIORITY) ret = compare_priority(node1, node2);
 	if (sort_method == SORT_METHOD_ONOFFLINETIME) ret = compare_onofflinetime(node1, node2);
 	if (sort_method == SORT_METHOD_LOGSIZE) ret = compare_logsize(node1, node2);
+	if (sort_method == SORT_METHOD_ACCOUNT) ret = compare_account(node1, node2);
 	
 	if(reverse) ret *= (-1);
 	
@@ -676,6 +714,12 @@ static GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	gtk_list_store_set(model, &iter,
 				PREF_LIST_COL_LABEL, _("Protocol"),
 				PREF_LIST_COL_VALUE, SORT_METHOD_PROTOCOL,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Account"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_ACCOUNT,
 				-1);
 	
 	gtk_list_store_append(model, &iter);

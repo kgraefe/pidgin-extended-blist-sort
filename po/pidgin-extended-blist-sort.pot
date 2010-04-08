@@ -1,36 +1,36 @@
-# German translation of extended_blist_sort
-# Copyright (C) 2008
-# This file is distributed under the same license as the extended_blist_sort package.
-# Konrad Gräfe <freakazoid@teamblind.de>, 2008
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-08 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Konrad Gräfe <freakazoid@teamblind.de>, 2008\n"
-"Language-Team: German <freakazoid@teamblind.de>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/extended_blist_sort.c:173 ../src/extended_blist_sort.c:235
 msgid "Very Low"
-msgstr "Sehr niedrig"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:174 ../src/extended_blist_sort.c:228
 msgid "Low"
-msgstr "Niedrig"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:176 ../src/extended_blist_sort.c:214
 msgid "High"
-msgstr "Hoch"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:177 ../src/extended_blist_sort.c:207
 msgid "Very High"
-msgstr "Sehr hoch"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:179
 #, c-format
@@ -38,48 +38,46 @@ msgid ""
 "\n"
 "<b>Priority</b>: %s"
 msgstr ""
-"\n"
-"<b>Priorität</b>: %s"
 
 #: ../src/extended_blist_sort.c:221
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:238
 msgid "Set Priority"
-msgstr "Setze Priorität"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:252 ../src/extended_blist_sort.c:883
 msgid "Extended BList Sort"
-msgstr "Erweiterte Sortierung der Buddy-Liste"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:679
 msgid "(Nothing)"
-msgstr "(Nicht sortieren)"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:685
 msgid "Log Size"
-msgstr "Größe der Log-Dateien"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:691
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:697
 msgid "Online/Offline"
-msgstr "Online/Offline"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:703
 msgid "On-/Offline Time"
-msgstr "On-/Offline-Zeit"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:709
 msgid "Priority"
-msgstr "Priorität"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:715
 msgid "Protocol"
-msgstr "Protokoll"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:721
 msgid "Account"
@@ -87,35 +85,34 @@ msgstr ""
 
 #: ../src/extended_blist_sort.c:727
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:735
 msgid "Choose your way to sort the Buddy List:"
-msgstr "Wie möchten Sie sortieren?"
+msgstr ""
 
 #. erste Sortierung
 #: ../src/extended_blist_sort.c:747
 msgid "First:"
-msgstr "Zu Erst:"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:763 ../src/extended_blist_sort.c:787
 #: ../src/extended_blist_sort.c:811
 msgid "Reverse"
-msgstr "Rückwärts"
+msgstr ""
 
 #. zweite Sortierung
 #: ../src/extended_blist_sort.c:771
 msgid "Second:"
-msgstr "Danach:"
+msgstr ""
 
 #. dritte Sortierung
 #: ../src/extended_blist_sort.c:795
 msgid "Last:"
-msgstr "Zu Letzt:"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:884 ../src/extended_blist_sort.c:885
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
 msgstr ""
-"Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
