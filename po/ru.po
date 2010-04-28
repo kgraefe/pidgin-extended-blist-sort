@@ -1,4 +1,4 @@
-# Norwegian Bokmal translation for pidgin-extended-blist-sort
+# Russian translation for pidgin-extended-blist-sort
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the pidgin-extended-blist-sort package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: pidgin-extended-blist-sort\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-08 11:03+0200\n"
-"PO-Revision-Date: 2010-04-27 04:28+0000\n"
-"Last-Translator: kgraefe <Unknown>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"PO-Revision-Date: 2010-04-27 18:59+0000\n"
+"Last-Translator: Andrey Kulakov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: ../src/extended_blist_sort.c:173 ../src/extended_blist_sort.c:235
 msgid "Very Low"
-msgstr "Veldig lav"
+msgstr "Очень низкий"
 
 #: ../src/extended_blist_sort.c:174 ../src/extended_blist_sort.c:228
 msgid "Low"
-msgstr "Lav"
+msgstr "Низкий"
 
 #: ../src/extended_blist_sort.c:176 ../src/extended_blist_sort.c:214
 msgid "High"
-msgstr "Høy"
+msgstr "Высокий"
 
 #: ../src/extended_blist_sort.c:177 ../src/extended_blist_sort.c:207
 msgid "Very High"
-msgstr "Veldig høy"
+msgstr "Очень высокий"
 
 #: ../src/extended_blist_sort.c:179
 #, c-format
@@ -40,82 +40,84 @@ msgid ""
 "<b>Priority</b>: %s"
 msgstr ""
 "\n"
-"<b>Prioritet</b>: %s"
+"<b>Приоритет</b>: %s"
 
 #: ../src/extended_blist_sort.c:221
 msgid "Normal"
-msgstr "Normal"
+msgstr "Нормальный"
 
 #: ../src/extended_blist_sort.c:238
 msgid "Set Priority"
-msgstr "Legg inn prioritet"
+msgstr "Задать приоритет"
 
 #: ../src/extended_blist_sort.c:252 ../src/extended_blist_sort.c:883
 msgid "Extended BList Sort"
-msgstr ""
+msgstr "Расширенная сортировка списка контактов"
 
 #: ../src/extended_blist_sort.c:679
 msgid "(Nothing)"
-msgstr "(Ingenting)"
+msgstr "(Ничего)"
 
 #: ../src/extended_blist_sort.c:685
 msgid "Log Size"
-msgstr "Loggstørrelse"
+msgstr "Размер лога"
 
 #: ../src/extended_blist_sort.c:691
 msgid "Name"
-msgstr "Navn"
+msgstr "Имя"
 
 #: ../src/extended_blist_sort.c:697
 msgid "Online/Offline"
-msgstr "Tilkoblet/frakoblet"
+msgstr "В сети/Не в сети"
 
 #: ../src/extended_blist_sort.c:703
 msgid "On-/Offline Time"
-msgstr ""
+msgstr "Время в сети/не в сети"
 
 #: ../src/extended_blist_sort.c:709
 msgid "Priority"
-msgstr "Prioritet"
+msgstr "Приоритет"
 
 #: ../src/extended_blist_sort.c:715
 msgid "Protocol"
-msgstr "Protokoll"
+msgstr "Протокол"
 
 #: ../src/extended_blist_sort.c:721
 msgid "Account"
-msgstr "Konto"
+msgstr "Учетная запись"
 
 #: ../src/extended_blist_sort.c:727
 msgid "Status"
-msgstr "Status"
+msgstr "Статус"
 
 #: ../src/extended_blist_sort.c:735
 msgid "Choose your way to sort the Buddy List:"
-msgstr ""
+msgstr "Выберите способ сортировки списка контактов:"
 
 #. erste Sortierung
 #: ../src/extended_blist_sort.c:747
 msgid "First:"
-msgstr "Første:"
+msgstr "Первое:"
 
 #: ../src/extended_blist_sort.c:763 ../src/extended_blist_sort.c:787
 #: ../src/extended_blist_sort.c:811
 msgid "Reverse"
-msgstr "Omvendt"
+msgstr "В обратном порядке"
 
 #. zweite Sortierung
 #: ../src/extended_blist_sort.c:771
 msgid "Second:"
-msgstr "Andre:"
+msgstr "Второе:"
 
 #. dritte Sortierung
 #: ../src/extended_blist_sort.c:795
 msgid "Last:"
-msgstr "Siste:"
+msgstr "Последнее:"
 
 #: ../src/extended_blist_sort.c:884 ../src/extended_blist_sort.c:885
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
 msgstr ""
+"Этот плагин позволяет вам более гибко настроить сортировку вашего списка "
+"собеседников."
