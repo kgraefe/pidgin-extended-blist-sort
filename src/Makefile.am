@@ -8,6 +8,7 @@ extended_blist_sort_la_SOURCES = \
 	prefs.c \
 	sort_methods.c \
 	tooltip.c \
+	plugin_actions.c \
 	pidgin_internals.c
 
 extended_blist_sort_la_LDFLAGS = -module -avoid-version

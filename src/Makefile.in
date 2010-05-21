@@ -70,7 +70,7 @@ LTLIBRARIES = $(plugin_LTLIBRARIES)
 extended_blist_sort_la_LIBADD =
 am_extended_blist_sort_la_OBJECTS = extended_blist_sort.lo \
 	extended_menu.lo prefs.lo sort_methods.lo tooltip.lo \
-	pidgin_internals.lo
+	plugin_actions.lo pidgin_internals.lo
 extended_blist_sort_la_OBJECTS = $(am_extended_blist_sort_la_OBJECTS)
 extended_blist_sort_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -238,6 +238,7 @@ extended_blist_sort_la_SOURCES = \
 	prefs.c \
 	sort_methods.c \
 	tooltip.c \
+	plugin_actions.c \
 	pidgin_internals.c
 
 extended_blist_sort_la_LDFLAGS = -module -avoid-version
@@ -318,6 +319,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/extended_blist_sort.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/extended_menu.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pidgin_internals.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/plugin_actions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prefs.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sort_methods.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tooltip.Plo@am__quote@

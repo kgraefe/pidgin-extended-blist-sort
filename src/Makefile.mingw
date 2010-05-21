@@ -68,6 +68,7 @@ PLUGIN_SRC =	\
 	prefs.c \
 	sort_methods.c \
 	tooltip.c \
+	plugin_actions.c \
 	pidgin_internals.c
 
 

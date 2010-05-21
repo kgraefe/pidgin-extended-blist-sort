@@ -252,6 +252,7 @@ EXTRA_DIST = \
 	src/pidgin_internals.h \
 	src/prefs.h \
 	src/sort_methods.h \
+	src/plugin_actions.h \
 	src/tooltip.h
 
 SUBDIRS = src po

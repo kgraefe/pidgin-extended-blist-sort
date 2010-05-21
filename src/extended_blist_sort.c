@@ -23,6 +23,7 @@
 #include "prefs.h"
 #include "extended_menu.h"
 #include "tooltip.h"
+#include "plugin_actions.h"
 
 #include <version.h>
 #include <gtkplugin.h>
@@ -84,7 +85,7 @@ static PurplePluginInfo info = {
 	&ui_info,			/**< ui_info        */
 	NULL,				/**< extra_info     */
 	NULL,				/**< prefs_info     */
-	NULL,				/**< actions        */
+	plugin_actions,			/**< actions        */
 	
 	/* padding */
 	NULL,
