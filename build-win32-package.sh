@@ -2,11 +2,6 @@
 PROJECT=pidgin-extended-blist-sort
 WIN32DIR=${PROJECT}-$(cat VERSION)-win32
 
-languages=""
-for f in po/*.po
-do languages="$languages $(basename $f .po)"
-done
-
 make -f Makefile.mingw clean && \
 make -f Makefile.mingw && \
 mkdir -p ${WIN32DIR}/pidgin/plugins && \
@@ -14,7 +9,8 @@ sed 's/$/\r/' ChangeLog >${WIN32DIR}/ChangeLog.txt && \
 sed 's/$/\r/' README.win32 >${WIN32DIR}/ReadMe.txt && \
 cp src/${PROJECT}.dll ${WIN32DIR}/pidgin/plugins && \
 i586-mingw32msvc-strip --strip-unneeded ${WIN32DIR}/pidgin/plugins/${PROJECT}.dll && \
-for lang in $languages; do
+for f in po/*.po; do
+	lang=$(basename $f .po)
 	mkdir -p ${WIN32DIR}/pidgin/locale/${lang}/LC_MESSAGES && \
 	cp po/${lang}.gmo ${WIN32DIR}/pidgin/locale/${lang}/LC_MESSAGES/${PROJECT}.mo
 done && \
