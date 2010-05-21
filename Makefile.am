@@ -1,9 +1,17 @@
+ACLOCAL_AMFLAGS = -I m4
+
 EXTRA_DIST = \
 	VERSION \
 	Makefile.mingw \
 	src/Makefile.mingw \
 	po/Makefile.mingw \
 	config.h.mingw \
-	src/internal.h
+	src/extended_blist_sort.h \
+	src/extended_menu.h \
+	src/internal.h \
+	src/pidgin_internals.h \
+	src/prefs.h \
+	src/sort_methods.h \
+	src/tooltip.h
 
 SUBDIRS = src po

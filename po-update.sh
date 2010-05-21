@@ -2,5 +2,9 @@
 cd po
 echo "Updating POT template..."
 intltool-update -po
-echo "Checking german language file..."
-intltool-update de
+
+for f in *.po
+do echo "Checking ${f%.po} language file..."
+intltool-update ${f%.po}
+done
+

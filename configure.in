@@ -6,6 +6,7 @@ AC_INIT(pidgin-extended-blist-sort, 1.6, freakazoid@teamblind.de)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/extended_blist_sort.c])
 AC_CONFIG_HEADER([config.h])
+AC_CONFIG_MACRO_DIR([m4])
 
 AC_DEFINE_UNQUOTED(PLUGIN_VERSION, ["1.6"], [Define the plugin version to be used])
 
@@ -25,13 +26,13 @@ AC_PROG_INTLTOOL
 GETTEXT_PACKAGE=pidgin-extended-blist-sort
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], [Define the gettext package to be used])
-ALL_LINGUAS="de"
+ALL_LINGUAS="de nb ru"
 AM_GLIB_GNU_GETTEXT
 
 # Checks for libraries.
 PKG_CHECK_MODULES(pidgin, [pidgin >= 2.5.2], , [AC_MSG_ERROR(pidgin >= 2.5.2 required!)])
 LIBS="$LIBS $pidgin_LIBS"
-CFLAGS="$CFLAGS $pidgin_CFLAGS"
+CFLAGS="$CFLAGS $pidgin_CFLAGS -Wall -Werror-implicit-function-declaration"
 
 # Checks for header files.
 
