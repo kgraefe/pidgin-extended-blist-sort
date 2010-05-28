@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT(pidgin-extended-blist-sort, 1.6, freakazoid@teamblind.de)
+AC_INIT(pidgin-extended-blist-sort, 1.7, freakazoid@teamblind.de)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/extended_blist_sort.c])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_DEFINE_UNQUOTED(PLUGIN_VERSION, ["1.6"], [Define the plugin version to be used])
+AC_DEFINE_UNQUOTED(PLUGIN_VERSION, ["1.7"], [Define the plugin version to be used])
 
 AC_DEFINE_UNQUOTED(PLUGIN_WEBSITE, ["http://freakazoid.teamblind.de/2008/12/13/pidgin-extended-buddy-list-sort-plugin/"], [Define the plugin website to be used])
 

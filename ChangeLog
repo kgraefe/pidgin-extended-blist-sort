@@ -1,5 +1,6 @@
 Version 1.7 (????/??/??):
 	* Added Norwegian Bokmal and Russian language files
+	* Added possibility to sort by account (please read the hint in the preferences dialog)
 
 Version 1.6 (2009/07/04):
 	* Loading language files from .purple directory

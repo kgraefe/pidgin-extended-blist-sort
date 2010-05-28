@@ -1,4 +1,4 @@
-pidgin-extended-blist-sort (@@VERSION@@-@@DEB_REVISION@@) karmic; urgency=low
+pidgin-extended-blist-sort (@@VERSION@@-@@DEB_REVISION@@) @@DISTRIBUTION@@; urgency=low
 
   * release version @@VERSION@@
 
