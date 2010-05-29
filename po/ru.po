@@ -7,33 +7,127 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pidgin-extended-blist-sort\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 11:03+0200\n"
+"POT-Creation-Date: 2010-05-28 10:39+0000\n"
 "PO-Revision-Date: 2010-04-28 05:03+0000\n"
 "Last-Translator: kgraefe <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-22 04:09+0000\n"
+"X-Launchpad-Export-Date: 2010-05-29 04:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../src/extended_blist_sort.c:173 ../src/extended_blist_sort.c:235
-msgid "Very Low"
-msgstr "Очень низкий"
+#: ../src/extended_blist_sort.c:113 ../src/prefs.c:52
+#: ../src/sort_methods.c:379
+msgid "Extended BList Sort"
+msgstr "Расширенная сортировка списка контактов"
 
-#: ../src/extended_blist_sort.c:174 ../src/extended_blist_sort.c:228
-msgid "Low"
-msgstr "Низкий"
+#: ../src/extended_blist_sort.c:114 ../src/extended_blist_sort.c:115
+msgid ""
+"This Plugin allows you to sort your buddy list more flexible than pidgin "
+"does."
+msgstr ""
+"Этот плагин позволяет вам более гибко настроить сортировку вашего списка "
+"собеседников."
 
-#: ../src/extended_blist_sort.c:176 ../src/extended_blist_sort.c:214
-msgid "High"
-msgstr "Высокий"
-
-#: ../src/extended_blist_sort.c:177 ../src/extended_blist_sort.c:207
+#: ../src/extended_menu.c:61 ../src/tooltip.c:48
 msgid "Very High"
 msgstr "Очень высокий"
 
-#: ../src/extended_blist_sort.c:179
+#: ../src/extended_menu.c:68 ../src/tooltip.c:47
+msgid "High"
+msgstr "Высокий"
+
+#: ../src/extended_menu.c:75
+msgid "Normal"
+msgstr "Нормальный"
+
+#: ../src/extended_menu.c:82 ../src/tooltip.c:45
+msgid "Low"
+msgstr "Низкий"
+
+#: ../src/extended_menu.c:89 ../src/tooltip.c:44
+msgid "Very Low"
+msgstr "Очень низкий"
+
+#: ../src/extended_menu.c:92
+msgid "Set Priority"
+msgstr "Задать приоритет"
+
+#. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
+#: ../src/prefs.c:55
+msgid ""
+"You can reorder the accounts using drag and drop in the <b>Accounts</b> "
+"window at <b>Accounts->Manage Accounts</b>."
+msgstr ""
+
+#. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
+#: ../src/prefs.c:58
+msgid ""
+"Please note that the plugin wont recognize this change so that you have to "
+"use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
+msgstr ""
+
+#: ../src/prefs.c:153
+msgid "(Nothing)"
+msgstr "(Ничего)"
+
+#: ../src/prefs.c:159
+msgid "Log Size"
+msgstr "Размер лога"
+
+#: ../src/prefs.c:165
+msgid "Name"
+msgstr "Имя"
+
+#: ../src/prefs.c:171
+msgid "Online/Offline"
+msgstr "В сети/Не в сети"
+
+#: ../src/prefs.c:177
+msgid "On-/Offline Time"
+msgstr "Время в сети/не в сети"
+
+#: ../src/prefs.c:183
+msgid "Priority"
+msgstr "Приоритет"
+
+#: ../src/prefs.c:189
+msgid "Protocol"
+msgstr "Протокол"
+
+#: ../src/prefs.c:195
+msgid "Account"
+msgstr "Учетная запись"
+
+#: ../src/prefs.c:201
+msgid "Status"
+msgstr "Статус"
+
+#: ../src/prefs.c:209
+msgid "Choose your way to sort the Buddy List:"
+msgstr "Выберите способ сортировки списка контактов:"
+
+#. erste Sortierung
+#: ../src/prefs.c:221
+msgid "First:"
+msgstr "Первое:"
+
+#: ../src/prefs.c:237 ../src/prefs.c:270 ../src/prefs.c:302
+msgid "Reverse"
+msgstr "В обратном порядке"
+
+#. zweite Sortierung
+#: ../src/prefs.c:254
+msgid "Second:"
+msgstr "Второе:"
+
+#. dritte Sortierung
+#: ../src/prefs.c:286
+msgid "Last:"
+msgstr "Последнее:"
+
+#: ../src/tooltip.c:50
 #, c-format
 msgid ""
 "\n"
@@ -42,82 +136,6 @@ msgstr ""
 "\n"
 "<b>Приоритет</b>: %s"
 
-#: ../src/extended_blist_sort.c:221
-msgid "Normal"
-msgstr "Нормальный"
-
-#: ../src/extended_blist_sort.c:238
-msgid "Set Priority"
-msgstr "Задать приоритет"
-
-#: ../src/extended_blist_sort.c:252 ../src/extended_blist_sort.c:883
-msgid "Extended BList Sort"
-msgstr "Расширенная сортировка списка контактов"
-
-#: ../src/extended_blist_sort.c:679
-msgid "(Nothing)"
-msgstr "(Ничего)"
-
-#: ../src/extended_blist_sort.c:685
-msgid "Log Size"
-msgstr "Размер лога"
-
-#: ../src/extended_blist_sort.c:691
-msgid "Name"
-msgstr "Имя"
-
-#: ../src/extended_blist_sort.c:697
-msgid "Online/Offline"
-msgstr "В сети/Не в сети"
-
-#: ../src/extended_blist_sort.c:703
-msgid "On-/Offline Time"
-msgstr "Время в сети/не в сети"
-
-#: ../src/extended_blist_sort.c:709
-msgid "Priority"
-msgstr "Приоритет"
-
-#: ../src/extended_blist_sort.c:715
-msgid "Protocol"
-msgstr "Протокол"
-
-#: ../src/extended_blist_sort.c:721
-msgid "Account"
-msgstr "Учетная запись"
-
-#: ../src/extended_blist_sort.c:727
-msgid "Status"
-msgstr "Статус"
-
-#: ../src/extended_blist_sort.c:735
-msgid "Choose your way to sort the Buddy List:"
-msgstr "Выберите способ сортировки списка контактов:"
-
-#. erste Sortierung
-#: ../src/extended_blist_sort.c:747
-msgid "First:"
-msgstr "Первое:"
-
-#: ../src/extended_blist_sort.c:763 ../src/extended_blist_sort.c:787
-#: ../src/extended_blist_sort.c:811
-msgid "Reverse"
-msgstr "В обратном порядке"
-
-#. zweite Sortierung
-#: ../src/extended_blist_sort.c:771
-msgid "Second:"
-msgstr "Второе:"
-
-#. dritte Sortierung
-#: ../src/extended_blist_sort.c:795
-msgid "Last:"
-msgstr "Последнее:"
-
-#: ../src/extended_blist_sort.c:884 ../src/extended_blist_sort.c:885
-msgid ""
-"This Plugin allows you to sort your buddy list more flexible than pidgin "
-"does."
+#: ../src/plugin_actions.c:36
+msgid "Refresh Buddy List"
 msgstr ""
-"Этот плагин позволяет вам более гибко настроить сортировку вашего списка "
-"собеседников."
