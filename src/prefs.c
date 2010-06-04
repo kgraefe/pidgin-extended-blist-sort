@@ -64,9 +64,23 @@ static void infobutton_clicked_cb(GtkWidget *widget, gpointer data) {
 }
 
 static void update_infobuttons(void) {
-	gtk_widget_set_visible(infobuttons.infobutton1, (purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1") == SORT_METHOD_ACCOUNT));
-	gtk_widget_set_visible(infobuttons.infobutton2, (purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2") == SORT_METHOD_ACCOUNT));
-	gtk_widget_set_visible(infobuttons.infobutton3, (purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3") == SORT_METHOD_ACCOUNT));
+	if(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1") == SORT_METHOD_ACCOUNT) {
+		gtk_widget_show(infobuttons.infobutton1);
+	} else {
+		gtk_widget_hide(infobuttons.infobutton1);
+	}
+
+	if(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2") == SORT_METHOD_ACCOUNT) {
+		gtk_widget_show(infobuttons.infobutton2);
+	} else {
+		gtk_widget_hide(infobuttons.infobutton2);
+	}
+
+	if(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3") == SORT_METHOD_ACCOUNT) {
+		gtk_widget_show(infobuttons.infobutton3);
+	} else {
+		gtk_widget_hide(infobuttons.infobutton3);
+	}
 }
 
 static void toggle_cb(GtkWidget *widget, gpointer data) {
