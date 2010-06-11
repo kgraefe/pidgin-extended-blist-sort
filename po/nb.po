@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pidgin-extended-blist-sort\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-30 05:21+0000\n"
-"PO-Revision-Date: 2010-05-21 13:19+0000\n"
-"Last-Translator: Gamlerik <e.kamfjord@gmail.com>\n"
+"POT-Creation-Date: 2010-06-07 16:42+0000\n"
+"PO-Revision-Date: 2010-06-11 02:16+0000\n"
+"Last-Translator: Espen Krømke <beamboom@gmail.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-07 03:56+0000\n"
+"X-Launchpad-Export-Date: 2010-06-11 03:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/extended_blist_sort.c:113 ../src/prefs.c:52
@@ -60,6 +60,8 @@ msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
 msgstr ""
+"Du kan endre rekkefølgen på kontoene med musen i <b>Kontoer</b>-vinduet "
+"under <b>Kontoer -> Administrer Kontoer</b>."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
 #: ../src/prefs.c:58
@@ -67,63 +69,65 @@ msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
 msgstr ""
+"Vær oppmerksom på at utvidelsen ikke gjengkjenner denne endringen, du må "
+"bruke <b>Verktøy->Utvidet vennesortering -> Oppdater</b>"
 
-#: ../src/prefs.c:153
+#: ../src/prefs.c:167
 msgid "(Nothing)"
 msgstr "(Ingenting)"
 
-#: ../src/prefs.c:159
+#: ../src/prefs.c:173
 msgid "Log Size"
 msgstr "Loggstørrelse"
 
-#: ../src/prefs.c:165
+#: ../src/prefs.c:179
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/prefs.c:171
+#: ../src/prefs.c:185
 msgid "Online/Offline"
 msgstr "Tilkoblet/frakoblet"
 
-#: ../src/prefs.c:177
+#: ../src/prefs.c:191
 msgid "On-/Offline Time"
 msgstr "Fra-/Tilkoblet Tid"
 
-#: ../src/prefs.c:183
+#: ../src/prefs.c:197
 msgid "Priority"
 msgstr "Prioritet"
 
-#: ../src/prefs.c:189
+#: ../src/prefs.c:203
 msgid "Protocol"
 msgstr "Protokoll"
 
-#: ../src/prefs.c:195
+#: ../src/prefs.c:209
 msgid "Account"
 msgstr "Konto"
 
-#: ../src/prefs.c:201
+#: ../src/prefs.c:215
 msgid "Status"
 msgstr "Status"
 
-#: ../src/prefs.c:209
+#: ../src/prefs.c:223
 msgid "Choose your way to sort the Buddy List:"
 msgstr "Velg din måte å sortere Kompislista på"
 
 #. erste Sortierung
-#: ../src/prefs.c:221
+#: ../src/prefs.c:235
 msgid "First:"
 msgstr "Første:"
 
-#: ../src/prefs.c:237 ../src/prefs.c:270 ../src/prefs.c:302
+#: ../src/prefs.c:251 ../src/prefs.c:284 ../src/prefs.c:316
 msgid "Reverse"
 msgstr "Omvendt"
 
 #. zweite Sortierung
-#: ../src/prefs.c:254
+#: ../src/prefs.c:268
 msgid "Second:"
 msgstr "Andre:"
 
 #. dritte Sortierung
-#: ../src/prefs.c:286
+#: ../src/prefs.c:300
 msgid "Last:"
 msgstr "Siste:"
 
@@ -138,4 +142,4 @@ msgstr ""
 
 #: ../src/plugin_actions.c:36
 msgid "Refresh Buddy List"
-msgstr ""
+msgstr "Oppdater vennelisten"
