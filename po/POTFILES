@@ -1,1 +1,7 @@
-	../src/extended_blist_sort.c
+	../src/extended_blist_sort.c \
+	../src/extended_menu.c \
+	../src/prefs.c \
+	../src/sort_methods.c \
+	../src/tooltip.c \
+	../src/pidgin_internals.c \
+	../src/plugin_actions.c

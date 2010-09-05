@@ -3,8 +3,8 @@
 # Description: Makefile to generate mo files
 #
 
-EXT_BLIST_SORT_TOP := ..
--include $(EXT_BLIST_SORT_TOP)/local.mak
+PLUGIN_TOP := ..
+-include $(PLUGIN_TOP)/local.mak
 
 PIDGIN_TREE_TOP ?= ../../../..
 include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak

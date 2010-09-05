@@ -1,3 +1,11 @@
+Version 1.7.1 (2010/06/06):
+	* Fixed translation error in German translation
+	* Updated Russian translation
+
+Version 1.7 (2010/06/04):
+	* Added Norwegian Bokmal and Russian language files
+	* Added possibility to sort by account (please read the hint in the preferences dialog)
+
 Version 1.6 (2009/07/04):
 	* Loading language files from .purple directory
 	* Replaced jinuljts patch for "Reverse Log Size" sort method by the ability to reverse each sort level individually

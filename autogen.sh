@@ -1,12 +1,27 @@
 #! /bin/sh
 
-aclocal \
-&& automake --add-missing \
-&& autoconf \
-&& libtoolize --copy --install \
-&& (intltoolize --version) < /dev/null > /dev/null 2>&1 || {
-    echo;
-    echo "You must have intltool installed to compile extended-blist-sort";
-    echo;
-    exit;
-}
+ls VERSION >/dev/null && 
+ls configure.in.in >/dev/null &&
+ls COPYING >/dev/null &&
+echo generating configure.in &&
+
+languages=""
+for f in po/*.po
+do languages="$languages $(basename $f .po)"
+done
+
+sed -e "s/@@VERSION@@/$(cat VERSION)/" -e "s/@@LANGUAGES@@/$(echo $languages)/" configure.in.in >configure.in &&
+echo aclocal &&
+aclocal &&
+echo autoheader &&
+autoheader &&
+echo libtoolize --copy &&
+libtoolize --copy &&
+echo automake --add-missing --copy &&
+automake --add-missing --copy &&
+echo autoconf &&
+autoconf &&
+echo libtoolize --copy --install &&
+libtoolize --copy --install &&
+echo intltoolize --copy --force &&
+intltoolize --copy --force 

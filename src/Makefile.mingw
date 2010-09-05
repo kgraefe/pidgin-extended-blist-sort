@@ -7,24 +7,24 @@
 # PATHS
 #
 
-EXT_BLIST_SORT_TOP :=		..
--include $(EXT_BLIST_SORT_TOP)/local.mak
+PLUGIN_TOP :=		..
+-include $(PLUGIN_TOP)/local.mak
 PIDGIN_TREE_TOP ?=		../../../..
 include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak
 
-EXT_BLIST_SORT_VERSION := $(shell cat ${EXT_BLIST_SORT_TOP}/VERSION)
+PLUGIN_VERSION := $(shell cat ${PLUGIN_TOP}/VERSION)
 
 ##
 ## VARIABLE DEFINITIONS
 ##
 
-EXT_BLIST_SORT = pidgin-extended-blist-sort
+PLUGIN = pidgin-extended-blist-sort
 
 # Compiler Options
 
 #CFLAGS = 
 
-DEFINES = -DEXT_BLIST_SORT_VERSION=\"$(EXT_BLIST_SORT_VERSION)\" -DGETTEXT_PACKAGE=\"$(EXT_BLIST_SORT)\" -DHAVE_CONFIG_H
+DEFINES = -DPLUGIN_VERSION=\"$(PLUGIN_VERSION)\" -DGETTEXT_PACKAGE=\"$(PLUGIN)\" -DHAVE_CONFIG_H
 
 #LDFLAGS = 
 
@@ -62,11 +62,17 @@ LIB_PATHS =             \
 ##  SOURCES, OBJECTS
 ##
 
-EXT_BLIST_SORT_SRC =	\
-	extended_blist_sort.c
+PLUGIN_SRC =	\
+	extended_blist_sort.c \
+	extended_menu.c \
+	prefs.c \
+	sort_methods.c \
+	tooltip.c \
+	plugin_actions.c \
+	pidgin_internals.c
 
 
-EXT_BLIST_SORT_OBJ = $(EXT_BLIST_SORT_SRC:%.c=%.o)
+PLUGIN_OBJ = $(PLUGIN_SRC:%.c=%.o)
 
 ##
 ## LIBRARIES
@@ -94,22 +100,22 @@ include $(PIDGIN_COMMON_RULES)
 
 .PHONY: all clean install
 
-all: $(EXT_BLIST_SORT).dll
+all: $(PLUGIN).dll
 
 install: all $(PIDGIN_INSTALL_PLUGINS_DIR)
-	cp $(EXT_BLIST_SORT).dll $(PIDGIN_INSTALL_PLUGINS_DIR)
+	cp $(PLUGIN).dll $(PIDGIN_INSTALL_PLUGINS_DIR)
 
-$(EXT_BLIST_SORT_OBJ): $(EXT_BLIST_SORT_TOP)/config.h $(PURPLE_VERSION_H)
+$(PLUGIN_OBJ): $(PLUGIN_TOP)/config.h $(PURPLE_VERSION_H)
 
-$(EXT_BLIST_SORT_TOP)/config.h: $(EXT_BLIST_SORT_TOP)/config.h.mingw
-	$(MAKE) -C $(EXT_BLIST_SORT_TOP) -f Makefile.mingw config.h
+$(PLUGIN_TOP)/config.h: $(PLUGIN_TOP)/config.h.mingw
+	$(MAKE) -C $(PLUGIN_TOP) -f Makefile.mingw config.h
 
 ##
 ## BUILD DLL
 ##
 
-$(EXT_BLIST_SORT).dll: $(PIDGIN_DLL).a $(EXT_BLIST_SORT_OBJ)
-	$(CC) -shared $(EXT_BLIST_SORT_OBJ) $(LIB_PATHS) $(PLUGIN_LIBS) $(DLL_LD_FLAGS) -o $(EXT_BLIST_SORT).dll
+$(PLUGIN).dll: $(PIDGIN_DLL).a $(PLUGIN_OBJ)
+	$(CC) -shared $(PLUGIN_OBJ) $(LIB_PATHS) $(PLUGIN_LIBS) $(DLL_LD_FLAGS) -o $(PLUGIN).dll
 
 
 ##
@@ -118,6 +124,6 @@ $(EXT_BLIST_SORT).dll: $(PIDGIN_DLL).a $(EXT_BLIST_SORT_OBJ)
 
 clean:
 	rm -f *.o
-	rm -f $(EXT_BLIST_SORT).dll
+	rm -f $(PLUGIN).dll
 
 include $(PIDGIN_COMMON_TARGETS)
