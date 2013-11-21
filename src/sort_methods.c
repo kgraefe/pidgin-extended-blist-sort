@@ -45,6 +45,30 @@ static gint compare_name(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	return purple_utf8_strcasecmp(name1, name2);
 }
 
+static gint compare_last_name(PurpleBlistNode *node1, PurpleBlistNode *node2) {
+	const char *name1=NULL, *name2=NULL;
+	const char *tmp=NULL;
+
+	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
+		name1 = purple_contact_get_alias((PurpleContact *)node1);
+	}
+	if(!name1) name1 = PURPLE_BLIST_NODE_NAME(node1);
+
+	if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
+		name2 = purple_contact_get_alias((PurpleContact *)node2);
+	}
+	if(!name2) name2 = PURPLE_BLIST_NODE_NAME(node2);
+	
+	/* Searches for last space in name and, if found, sorts based on characters remaining */
+	tmp = strrchr(name1, ' ');
+	if(tmp != NULL) { name1 = tmp; }
+	tmp = NULL;
+	tmp = strrchr(name2, ' ');
+	if(tmp != NULL) { name2 = tmp; }
+
+	return purple_utf8_strcasecmp(name1, name2);
+}
+
 static gint compare_status(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	PurplePresence *p1=NULL, *p2=NULL;
 
@@ -285,6 +309,7 @@ static gint compare(gint sort_method, gboolean reverse, PurpleBlistNode *node1, 
 	
 	if (sort_method == SORT_METHOD_NOTHING) ret = compare_nothing(node1, node2);
 	if (sort_method == SORT_METHOD_NAME) ret = compare_name(node1, node2);
+	if (sort_method == SORT_METHOD_LAST_NAME) ret = compare_last_name(node1, node2);
 	if (sort_method == SORT_METHOD_STATUS) ret = compare_status(node1, node2);
 	if (sort_method == SORT_METHOD_ONOFFLINE) ret = compare_onoffline(node1, node2);
 	if (sort_method == SORT_METHOD_PROTOCOL) ret = compare_protocol(node1, node2);

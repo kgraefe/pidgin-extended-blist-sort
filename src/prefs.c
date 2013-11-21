@@ -182,6 +182,12 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	
 	gtk_list_store_append(model, &iter);
 	gtk_list_store_set(model, &iter,
+				PREF_LIST_COL_LABEL, _("Last Name"),
+				PREF_LIST_COL_VALUE, SORT_METHOD_LAST_NAME,
+				-1);
+	
+	gtk_list_store_append(model, &iter);
+	gtk_list_store_set(model, &iter,
 				PREF_LIST_COL_LABEL, _("Online/Offline"),
 				PREF_LIST_COL_VALUE, SORT_METHOD_ONOFFLINE,
 				-1);

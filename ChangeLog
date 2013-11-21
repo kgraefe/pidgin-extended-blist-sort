@@ -1,3 +1,7 @@
+Version 1.8 (????/??/??):
+	* Added possibility to sort by last name (Bug #1241774, thanks to
+	Jeffrey Baitis)
+
 Version 1.7.1 (2010/06/06):
 	* Fixed translation error in German translation
 	* Updated Russian translation

@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pidgin-extended-blist-sort\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-28 13:04+0000\n"
+"POT-Creation-Date: 2013-11-22 00:19+0100\n"
 "PO-Revision-Date: 2010-10-27 07:50+0000\n"
 "Last-Translator: Ushakov Maxim <msincster@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,7 +19,7 @@ msgstr ""
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/extended_blist_sort.c:113 ../src/prefs.c:52
-#: ../src/sort_methods.c:379
+#: ../src/sort_methods.c:404
 msgid "Extended BList Sort"
 msgstr "Расширенная сортировка списка собеседников"
 
@@ -87,49 +88,54 @@ msgid "Name"
 msgstr "Имя"
 
 #: ../src/prefs.c:185
+#, fuzzy
+msgid "Last Name"
+msgstr "Имя"
+
+#: ../src/prefs.c:191
 msgid "Online/Offline"
 msgstr "В сети/Не в сети"
 
-#: ../src/prefs.c:191
+#: ../src/prefs.c:197
 msgid "On-/Offline Time"
 msgstr "Время в сети/не в сети"
 
-#: ../src/prefs.c:197
+#: ../src/prefs.c:203
 msgid "Priority"
 msgstr "Приоритет"
 
-#: ../src/prefs.c:203
+#: ../src/prefs.c:209
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../src/prefs.c:209
+#: ../src/prefs.c:215
 msgid "Account"
 msgstr "Учетная запись"
 
-#: ../src/prefs.c:215
+#: ../src/prefs.c:221
 msgid "Status"
 msgstr "Статус"
 
-#: ../src/prefs.c:223
+#: ../src/prefs.c:229
 msgid "Choose your way to sort the Buddy List:"
 msgstr "Выберите способ сортировки списка собеседников:"
 
 #. erste Sortierung
-#: ../src/prefs.c:235
+#: ../src/prefs.c:241
 msgid "First:"
 msgstr "Первое:"
 
-#: ../src/prefs.c:251 ../src/prefs.c:284 ../src/prefs.c:316
+#: ../src/prefs.c:257 ../src/prefs.c:290 ../src/prefs.c:322
 msgid "Reverse"
 msgstr "В обратном порядке"
 
 #. zweite Sortierung
-#: ../src/prefs.c:268
+#: ../src/prefs.c:274
 msgid "Second:"
 msgstr "Второе:"
 
 #. dritte Sortierung
-#: ../src/prefs.c:300
+#: ../src/prefs.c:306
 msgid "Last:"
 msgstr "Последнее:"
 
