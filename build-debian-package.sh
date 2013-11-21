@@ -3,7 +3,12 @@
 PROJECT=pidgin-extended-blist-sort
 VERSION=$(cat VERSION)
 REPOSITORY=ppa:konradgraefe/pidgin-plugins
-DISTRIBUTIONS="karmic lucid maverick"
+if [ -f ../DEBIAN_DISTRIBUTIONS ]; then
+	DISTRIBUTIONS=$(cat ../DEBIAN_DISTRIBUTIONS)
+else
+	#DISTRIBUTIONS="natty lucid maverick"
+	DISTRIBUTIONS="precise oneiric"
+fi
 
 if [ -f DEB_REVISION ]; then
 	DEB_REVISION=$(cat DEB_REVISION)
