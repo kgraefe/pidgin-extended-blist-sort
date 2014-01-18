@@ -37,19 +37,21 @@ DEFINES = -DPLUGIN_VERSION=\"$(PLUGIN_VERSION)\" -DGETTEXT_PACKAGE=\"$(PLUGIN)\"
 INCLUDE_PATHS +=	-I. \
 			-I.. \
 			-I$(PIDGIN_TREE_TOP) \
-                        -I$(PURPLE_TOP) \
-                        -I$(PURPLE_TOP)/win32 \
-                        -I$(PIDGIN_TOP) \
-                        -I$(PIDGIN_TOP)/win32 \
-                        -I$(GTK_TOP)/include \
-                        -I$(GTK_TOP)/include/gtk-2.0 \
-                        -I$(GTK_TOP)/include/glib-2.0 \
-                        -I$(GTK_TOP)/include/pango-1.0 \
-                        -I$(GTK_TOP)/include/atk-1.0 \
-                        -I$(GTK_TOP)/include/freetype2 \
-                        -I$(GTK_TOP)/lib/glib-2.0/include \
-                        -I$(GTK_TOP)/lib/gtk-2.0/include \
-                        -I$(PIDGIN_TREE_TOP)
+			-I$(PURPLE_TOP) \
+			-I$(PURPLE_TOP)/win32 \
+			-I$(PIDGIN_TOP) \
+			-I$(PIDGIN_TOP)/win32 \
+			-I$(GTK_TOP)/include \
+			-I$(GTK_TOP)/include/gtk-2.0 \
+			-I$(GTK_TOP)/include/glib-2.0 \
+			-I$(GTK_TOP)/include/pango-1.0 \
+			-I$(GTK_TOP)/include/atk-1.0 \
+			-I$(GTK_TOP)/include/freetype2 \
+			-I$(GTK_TOP)/include/freetype2 \
+			-I$(GTK_TOP)/include/cairo \
+			-I$(GTK_TOP)/lib/glib-2.0/include \
+			-I$(GTK_TOP)/lib/gtk-2.0/include \
+			-I$(PIDGIN_TREE_TOP)
 
 LIB_PATHS =             \
                         -L$(PURPLE_TOP) \

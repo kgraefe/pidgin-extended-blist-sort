@@ -1,7 +1,8 @@
 #!/bin/bash
-vim ChangeLog &&
-vim VERSION &&
-sed "s/@@VERSION@@/$(cat VERSION)/" configure.in.in >configure.in &&
-./autogen.sh &&
-./configure &&
+
+vim ChangeLog || exit 1
+vim VERSION || exit 1
+sed "s/@@VERSION@@/$(cat VERSION)/" configure.ac.in >configure.ac || exit 1
+./autogen.sh || exit 1
+./configure || exit 1
 cp config.h config.h.mingw
