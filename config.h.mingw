@@ -78,7 +78,7 @@
 #define PACKAGE_VERSION "1.8.0"
 
 /* Define the plugin author to be used */
-#define PLUGIN_AUTHOR "Konrad Gräfe <freakazoid@teamblind.de>"
+#define PLUGIN_AUTHOR "Konrad Gräfe <konradgraefe@aol.com>"
 
 /* Define the plugin website to be used */
 #define PLUGIN_ID "gtk-freakazoid-extended-blist-sort"
@@ -90,7 +90,7 @@
 #define PLUGIN_VERSION "1.8.0"
 
 /* Define the plugin website to be used */
-#define PLUGIN_WEBSITE "http://freakazoid.teamblind.de/2008/12/13/pidgin-extended-buddy-list-sort-plugin/"
+#define PLUGIN_WEBSITE "https://github.com/kgraefe/pidgin-extended-blist-sort"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
