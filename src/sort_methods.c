@@ -35,12 +35,16 @@ static gint compare_name(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
 		name1 = purple_contact_get_alias((PurpleContact *)node1);
 	}
-	if(!name1) name1 = PURPLE_BLIST_NODE_NAME(node1);
+	if(!name1) {
+		name1 = PURPLE_BLIST_NODE_NAME(node1);
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
 		name2 = purple_contact_get_alias((PurpleContact *)node2);
 	}
-	if(!name2) name2 = PURPLE_BLIST_NODE_NAME(node2);
+	if(!name2) {
+		name2 = PURPLE_BLIST_NODE_NAME(node2);
+	}
 
 	return purple_utf8_strcasecmp(name1, name2);
 }
@@ -52,19 +56,27 @@ static gint compare_last_name(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
 		name1 = purple_contact_get_alias((PurpleContact *)node1);
 	}
-	if(!name1) name1 = PURPLE_BLIST_NODE_NAME(node1);
+	if(!name1) {
+		name1 = PURPLE_BLIST_NODE_NAME(node1);
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
 		name2 = purple_contact_get_alias((PurpleContact *)node2);
 	}
-	if(!name2) name2 = PURPLE_BLIST_NODE_NAME(node2);
+	if(!name2) {
+		name2 = PURPLE_BLIST_NODE_NAME(node2);
+	}
 	
 	/* Searches for last space in name and, if found, sorts based on characters remaining */
 	tmp = strrchr(name1, ' ');
-	if(tmp != NULL) { name1 = tmp; }
-	tmp = NULL;
+	if(tmp != NULL) {
+		name1 = tmp;
+	}
+
 	tmp = strrchr(name2, ' ');
-	if(tmp != NULL) { name2 = tmp; }
+	if(tmp != NULL) {
+		name2 = tmp;
+	}
 
 	return purple_utf8_strcasecmp(name1, name2);
 }
@@ -72,7 +84,9 @@ static gint compare_last_name(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 static gint compare_status(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	PurplePresence *p1=NULL, *p2=NULL;
 
-	if(!node1) return 0;
+	if(!node1) {
+		return 0;
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CHAT(node1) && PURPLE_BLIST_NODE_IS_CHAT(node2)) {
 		return 0;
@@ -83,11 +97,15 @@ static gint compare_status(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	}
 
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
-		p1 = purple_buddy_get_presence(purple_contact_get_priority_buddy((PurpleContact *)node1));
+		p1 = purple_buddy_get_presence(
+			purple_contact_get_priority_buddy((PurpleContact *)node1)
+		);
 	}
 
 	if(node2 && PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
-		p2 = purple_buddy_get_presence(purple_contact_get_priority_buddy((PurpleContact *)node2));
+		p2 = purple_buddy_get_presence(
+			purple_contact_get_priority_buddy((PurpleContact *)node2)
+		);
 	}
 
 	return purple_presence_compare(p1, p2);
@@ -96,8 +114,12 @@ static gint compare_status(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 static gint compare_onoffline(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	PurpleBuddy *buddy1=NULL, *buddy2=NULL;
 	
-	if(!node1) return 0;
-	if(!node2) return 0;
+	if(!node1) {
+		return 0;
+	}
+	if(!node2) {
+		return 0;
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CHAT(node1) && PURPLE_BLIST_NODE_IS_CHAT(node2)) {
 		return 0;
@@ -139,7 +161,9 @@ static gint compare_onoffline(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 static gint compare_protocol(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	PurpleAccount *acc1=NULL, *acc2=NULL;
 
-	if(!node1) return 0;
+	if(!node1) {
+		return 0;
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CHAT(node1)) {
 		acc1 = ((PurpleChat *)node1)->account;
@@ -168,25 +192,41 @@ static gint compare_protocol(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 static gint compare_priority(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	int p1, p2;
 	
-	if(!node1) return 0;
+	if(!node1) {
+		return 0;
+	}
 	
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
-		p1 = purple_blist_node_get_int((PurpleBlistNode *)purple_contact_get_priority_buddy((PurpleContact *)node1), "extended_sort_method_priority");
+		p1 = purple_blist_node_get_int(
+			(PurpleBlistNode *)purple_contact_get_priority_buddy((PurpleContact *)node1),
+			"extended_sort_method_priority"
+		);
 	} else {
 		p1 = purple_blist_node_get_int(node1, "extended_sort_method_priority");
 	}
 
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
-		p2 = purple_blist_node_get_int((PurpleBlistNode *)purple_contact_get_priority_buddy((PurpleContact *)node2), "extended_sort_method_priority");
+		p2 = purple_blist_node_get_int(
+			(PurpleBlistNode *)purple_contact_get_priority_buddy((PurpleContact *)node2),
+			"extended_sort_method_priority"
+		);
 	} else {
 		p2 = purple_blist_node_get_int(node2, "extended_sort_method_priority");
 	}
 	
-	if(p1 == PRIORITY_UNDEFINED) p1=PRIORITY_NORMAL;
-	if(p2 == PRIORITY_UNDEFINED) p2=PRIORITY_NORMAL;
+	if(p1 == PRIORITY_UNDEFINED) {
+		p1=PRIORITY_NORMAL;
+	}
+	if(p2 == PRIORITY_UNDEFINED) {
+		p2=PRIORITY_NORMAL;
+	}
 	
-	if(p1 > p2) return -1;
-	if(p2 > p1) return 1;
+	if(p1 > p2) {
+		return -1;
+	}
+	if(p2 > p1) {
+		return 1;
+	}
 	return 0;
 }
 
@@ -194,7 +234,9 @@ static gint compare_onofflinetime(PurpleBlistNode *node1, PurpleBlistNode *node2
 	PurpleBuddy *buddy1=NULL, *buddy2=NULL;
 	int t1=0, t2=0;
 	
-	if(!node1) return 0;
+	if(!node1) {
+		return 0;
+	}
 
 	if(PURPLE_BLIST_NODE_IS_CHAT(node1) && PURPLE_BLIST_NODE_IS_CHAT(node2)) {
 		return 0;
@@ -226,8 +268,12 @@ static gint compare_onofflinetime(PurpleBlistNode *node1, PurpleBlistNode *node2
 		t2 = purple_blist_node_get_int((PurpleBlistNode *)buddy2, "last_seen");
 	}
 	
-	if(t1 > t2) return -1;
-	if(t2 > t1) return 1;
+	if(t1 > t2) {
+		return -1;
+	}
+	if(t2 > t1) {
+		return 1;
+	}
 	return 0;
 }
 
@@ -238,29 +284,47 @@ static gint compare_logsize(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node1)) {
 		for (child = node1->child; child; child = child->next) {
 			if(PURPLE_BLIST_NODE_IS_BUDDY(child)) {
-				logsize1 += purple_log_get_total_size(PURPLE_LOG_IM, ((PurpleBuddy*)(child))->name, ((PurpleBuddy*)(child))->account);
+				logsize1 += purple_log_get_total_size(
+					PURPLE_LOG_IM,
+					((PurpleBuddy*)(child))->name, ((PurpleBuddy*)(child))->account
+				);
 			}
 		}
 	}
 	if(PURPLE_BLIST_NODE_IS_BUDDY(node1)) {
-		logsize1 = purple_log_get_total_size(PURPLE_LOG_IM, PURPLE_BLIST_NODE_NAME(node1), ((PurpleBuddy *)node1)->account);
+		logsize1 = purple_log_get_total_size(
+			PURPLE_LOG_IM,
+			PURPLE_BLIST_NODE_NAME(node1), ((PurpleBuddy *)node1)->account
+		);
 	}
 	if(PURPLE_BLIST_NODE_IS_CHAT(node1)) {
-		logsize1 = purple_log_get_total_size(PURPLE_LOG_CHAT, PURPLE_BLIST_NODE_NAME(node1), ((PurpleChat *)node1)->account);
+		logsize1 = purple_log_get_total_size(
+			PURPLE_LOG_CHAT,
+			PURPLE_BLIST_NODE_NAME(node1), ((PurpleChat *)node1)->account
+		);
 	}
 
 	if(PURPLE_BLIST_NODE_IS_CONTACT(node2)) {
 		for (child = node2->child; child; child = child->next) {
 			if(PURPLE_BLIST_NODE_IS_BUDDY(child)) {
-				logsize2 += purple_log_get_total_size(PURPLE_LOG_IM, ((PurpleBuddy*)(child))->name, ((PurpleBuddy*)(child))->account);
+				logsize2 += purple_log_get_total_size(
+					PURPLE_LOG_IM,
+					((PurpleBuddy*)(child))->name, ((PurpleBuddy*)(child))->account
+				);
 			}
 		}
 	}
 	if(PURPLE_BLIST_NODE_IS_BUDDY(node2)) {
-		logsize2 = purple_log_get_total_size(PURPLE_LOG_IM, PURPLE_BLIST_NODE_NAME(node2), ((PurpleBuddy *)node2)->account);
+		logsize2 = purple_log_get_total_size(
+			PURPLE_LOG_IM,
+			PURPLE_BLIST_NODE_NAME(node2), ((PurpleBuddy *)node2)->account
+		);
 	}
 	if(PURPLE_BLIST_NODE_IS_CHAT(node2)) {
-		logsize2 = purple_log_get_total_size(PURPLE_LOG_CHAT, PURPLE_BLIST_NODE_NAME(node2), ((PurpleChat *)node2)->account);
+		logsize2 = purple_log_get_total_size(
+			PURPLE_LOG_CHAT,
+			PURPLE_BLIST_NODE_NAME(node2), ((PurpleChat *)node2)->account
+		);
 	}
 	
 	if(logsize1 > logsize2) return -1;
@@ -307,23 +371,50 @@ static gint compare_account(PurpleBlistNode *node1, PurpleBlistNode *node2) {
 static gint compare(gint sort_method, gboolean reverse, PurpleBlistNode *node1, PurpleBlistNode *node2) {
 	gint ret = 0;
 	
-	if (sort_method == SORT_METHOD_NOTHING) ret = compare_nothing(node1, node2);
-	if (sort_method == SORT_METHOD_NAME) ret = compare_name(node1, node2);
-	if (sort_method == SORT_METHOD_LAST_NAME) ret = compare_last_name(node1, node2);
-	if (sort_method == SORT_METHOD_STATUS) ret = compare_status(node1, node2);
-	if (sort_method == SORT_METHOD_ONOFFLINE) ret = compare_onoffline(node1, node2);
-	if (sort_method == SORT_METHOD_PROTOCOL) ret = compare_protocol(node1, node2);
-	if (sort_method == SORT_METHOD_PRIORITY) ret = compare_priority(node1, node2);
-	if (sort_method == SORT_METHOD_ONOFFLINETIME) ret = compare_onofflinetime(node1, node2);
-	if (sort_method == SORT_METHOD_LOGSIZE) ret = compare_logsize(node1, node2);
-	if (sort_method == SORT_METHOD_ACCOUNT) ret = compare_account(node1, node2);
+	switch(sort_method) {
+	case SORT_METHOD_NOTHING:
+		ret = compare_nothing(node1, node2);
+		break;
+	case SORT_METHOD_NAME:
+		ret = compare_name(node1, node2);
+		break;
+	case SORT_METHOD_LAST_NAME:
+		ret = compare_last_name(node1, node2);
+		break;
+	case SORT_METHOD_STATUS:
+		ret = compare_status(node1, node2);
+		break;
+	case SORT_METHOD_ONOFFLINE:
+		ret = compare_onoffline(node1, node2);
+		break;
+	case SORT_METHOD_PROTOCOL:
+		ret = compare_protocol(node1, node2);
+		break;
+	case SORT_METHOD_PRIORITY:
+		ret = compare_priority(node1, node2);
+		break;
+	case SORT_METHOD_ONOFFLINETIME:
+		ret = compare_onofflinetime(node1, node2);
+		break;
+	case SORT_METHOD_LOGSIZE:
+		ret = compare_logsize(node1, node2);
+		break;
+	case SORT_METHOD_ACCOUNT:
+		ret = compare_account(node1, node2);
+		break;
+	}
 	
-	if(reverse) ret *= (-1);
+	if(reverse) {
+		ret *= (-1);
+	}
 	
 	return ret;
 }
 
-static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *blist, GtkTreeIter group, GtkTreeIter *cur, GtkTreeIter *ret) {
+static void sort_method_ext_blist_sort(
+	PurpleBlistNode *node, PurpleBuddyList *blist,
+	GtkTreeIter group, GtkTreeIter *cur, GtkTreeIter *ret
+) {
 	GtkTreeIter tmp_iter;
 	PidginBuddyList *gtkblist;
 
@@ -332,32 +423,45 @@ static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *b
 
 	if(!PURPLE_BLIST_NODE_IS_CONTACT(node) && !PURPLE_BLIST_NODE_IS_CHAT(node)) {
 		sort_method_none(node, blist, group, cur, ret);
-                return;	
+		return;	
 	}
 
-	// Erstes Kind der Gruppe holen, falls keine Kinder vorhanden sofort einfügen
+	/* Get first child of group. Insert immediately if group is empty. */
 	if (!gtk_tree_model_iter_children(GTK_TREE_MODEL(gtkblist->treemodel), &tmp_iter, &group)) {
-        	gtk_tree_store_insert(gtkblist->treemodel, ret, &group, 0);
-        	return;
-        }
+		gtk_tree_store_insert(gtkblist->treemodel, ret, &group, 0);
+		return;
+	}
 
-	// Alle Kinder durchgehen
+	/* Go trough all children */
 	do {
 		GValue val;
 		PurpleBlistNode *n;
 		gint cmp1, cmp2, cmp3;
 
-		// BlistNode aus "TreeModelNode" holen
+		/* Retrieve a BlistNode from a TreeModelNode */
 		val.g_type=0;
 		gtk_tree_model_get_value(GTK_TREE_MODEL(gtkblist->treemodel), &tmp_iter, NODE_COLUMN, &val);
 		n = g_value_get_pointer(&val);
 
-		// vergleichen...
-		cmp1=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse"), node, n);
-		cmp2=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse"), node, n);
-		cmp3=compare(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse"), node, n);
+		/* Comparing... */
+		cmp1 = compare(
+			purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"),
+			purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse"),
+			node, n
+		);
+		cmp2 = compare(
+			purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"),
+			purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse"),
+			node, n
+		);
+		cmp3 = compare(
+			purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"),
+			purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse"),
+			node, n
+		);
 
-		// Kommt der Knoten vor den aktuellen?
+		/* Insert node before the current? */
+		/* TODO: refactor */
 		if(cmp1 < 0 ||
 			(cmp1 == 0 &&
 				(cmp2 < 0 ||
@@ -375,33 +479,45 @@ static void sort_method_ext_blist_sort(PurpleBlistNode *node, PurpleBuddyList *b
 
 		g_value_unset(&val);
 
-	// Gehe zum nächsten Knoten
-	}while(gtk_tree_model_iter_next(GTK_TREE_MODEL(gtkblist->treemodel), &tmp_iter));
+		/* Get next node */
+	} while(gtk_tree_model_iter_next(GTK_TREE_MODEL(gtkblist->treemodel), &tmp_iter));
 
-	// Ans Ende einfügen
+	/* Insert at the end */
 	if(cur == NULL) {
 		gtk_tree_store_append(gtkblist->treemodel, ret, &group);
 	} else {
 		gtk_tree_store_move_before(gtkblist->treemodel, cur, NULL);
 		*ret = *cur;
-        }
-        return;
+	}
+	return;
 	
 }
 
 static void reset_sort_method() {
-	if(purple_utf8_strcasecmp(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/blist/sort_type"), "ext_blist_sort")==0) {
-		if(purple_utf8_strcasecmp(purple_prefs_get_string(PLUGIN_PREFS_PREFIX "/old_sort_method"), "")!=0) {
-			purple_prefs_set_string(PIDGIN_PREFS_ROOT "/blist/sort_type", purple_prefs_get_string(PLUGIN_PREFS_PREFIX "/old_sort_method"));
+	if(purple_utf8_strcasecmp(
+		purple_prefs_get_string(PIDGIN_PREFS_ROOT "/blist/sort_type"),
+		"ext_blist_sort"
+	) == 0) {
+		if(purple_utf8_strcasecmp(
+			purple_prefs_get_string(PLUGIN_PREFS_PREFIX "/old_sort_method"),
+			""
+		) != 0) {
+			purple_prefs_set_string(
+				PIDGIN_PREFS_ROOT "/blist/sort_type",
+				purple_prefs_get_string(PLUGIN_PREFS_PREFIX "/old_sort_method")
+			);
 		} else {
 			purple_prefs_set_string(PIDGIN_PREFS_ROOT "/blist/sort_type", "none");
 		}
 	}
-	
 }
 
 void init_sort_methods(void) {
-	pidgin_blist_sort_method_reg("ext_blist_sort", _("Extended BList Sort"), sort_method_ext_blist_sort);
+	pidgin_blist_sort_method_reg(
+		"ext_blist_sort",
+		_("Extended BList Sort"),
+		sort_method_ext_blist_sort
+	);
 }
 
 void uninit_sort_methods(void) {

@@ -47,15 +47,28 @@ static InfoButtons infobuttons;
 static void infobutton_clicked_cb(GtkWidget *widget, gpointer data) {
 	GtkWidget *dialog;
 	
-	dialog = gtk_message_dialog_new_with_markup(NULL, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, NULL);
+	dialog = gtk_message_dialog_new_with_markup(NULL,
+		GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_INFO,
+		GTK_BUTTONS_OK, NULL
+	);
 
 	gtk_window_set_title(GTK_WINDOW(dialog), _("Extended BList Sort"));
 
-	/* Translators: Please maintain the use of -> and <- to refer to menu hierarchy */
-	gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dialog), pidgin_make_pretty_arrows(_("You can reorder the accounts using drag and drop in the <b>Accounts</b> window at <b>Accounts->Manage Accounts</b>.")));
+	gtk_message_dialog_set_markup(
+		GTK_MESSAGE_DIALOG(dialog),
+		pidgin_make_pretty_arrows(
+			/* Translators: Please maintain the use of -> and <- to refer to menu hierarchy */
+			_("You can reorder the accounts using drag and drop in the <b>Accounts</b> window at <b>Accounts->Manage Accounts</b>.")
+		)
+	);
 
-	/* Translators: Please maintain the use of -> and <- to refer to menu hierarchy */
-	gtk_message_dialog_format_secondary_markup(GTK_MESSAGE_DIALOG(dialog), "%s", pidgin_make_pretty_arrows(_("Please note that the plugin wont recognize this change so that you have to use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list.")));
+	gtk_message_dialog_format_secondary_markup(
+		GTK_MESSAGE_DIALOG(dialog), "%s",
+		pidgin_make_pretty_arrows(
+			/* Translators: Please maintain the use of -> and <- to refer to menu hierarchy */
+			_("Please note that the plugin wont recognize this change so that you have to use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list.")
+		)
+	);
 	
 	g_signal_connect_swapped(dialog, "response", G_CALLBACK(gtk_widget_destroy), dialog);
 
@@ -237,7 +250,7 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	
 	current_row = 0;
 	
-	/* erste Sortierung */
+	/* First sort option */
 	label = gtk_label_new(_("First:"));
 	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
@@ -270,7 +283,7 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	
 	current_row+=2;
 	
-	/* zweite Sortierung */
+	/* Second sort option */
 	label = gtk_label_new(_("Second:"));
 	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
@@ -302,7 +315,7 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	
 	current_row+=2;
 	
-	/* dritte Sortierung */
+	/* Third sort option */
 	label = gtk_label_new(_("Last:"));
 	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);

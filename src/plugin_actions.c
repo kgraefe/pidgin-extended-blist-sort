@@ -28,14 +28,14 @@ static void refresh_blist_cb(PurplePluginAction *action) {
 }
 
 GList *plugin_actions(PurplePlugin *plugin, gpointer context) {
-        GList *l;
-        PurplePluginAction *action;
+	GList *l;
+	PurplePluginAction *action;
 
-        l = NULL;
+	l = NULL;
 
-        action = purple_plugin_action_new(_("Refresh Buddy List"), refresh_blist_cb);
-        l = g_list_append(l, action);
+	action = purple_plugin_action_new(_("Refresh Buddy List"), refresh_blist_cb);
+	l = g_list_append(l, action);
 
-        return l;
+	return l;
 }
 

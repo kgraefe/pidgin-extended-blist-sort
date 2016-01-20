@@ -33,67 +33,64 @@ static void buddy_set_priority_cb(PurpleBlistNode *node, gpointer priority) {
 	pidgin_blist_refresh(purple_get_blist());
 }
 
+static GList *menu_append(GList *menu, PurpleBlistNode *node, int priority, const char *label) {
+	int nodePriority;
+	void (*callback)();
+
+	nodePriority = purple_blist_node_get_int(node, "extended_sort_method_priority");
+
+	if(nodePriority == priority) {
+		/* Disabled menu entry */
+		callback = NULL;
+	} else if(nodePriority == PRIORITY_UNDEFINED && priority == PRIORITY_NORMAL) {
+		callback = NULL;
+	} else {
+		callback = buddy_set_priority_cb;
+	}
+
+	return g_list_append(menu, purple_menu_action_new(
+		label, PURPLE_CALLBACK(callback),
+		GINT_TO_POINTER(priority), NULL
+	));
+}
+
 static void extended_buddy_menu_cb(PurpleBlistNode *node, GList **menu) {
 	PurpleMenuAction *action = NULL;
 	GList *submenu = NULL;
-	int priority;
-	void (*callback)();
-	
-	if(!PURPLE_BLIST_NODE_IS_CONTACT(node) &&
-	   !PURPLE_BLIST_NODE_IS_BUDDY(node) &&
-	   !PURPLE_BLIST_NODE_IS_CHAT(node)) return;
-	
-	if(purple_blist_node_get_flags(node) & PURPLE_BLIST_NODE_FLAG_NO_SAVE) return;
-	
-	if(purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1") != SORT_METHOD_PRIORITY &&
-	   purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2") != SORT_METHOD_PRIORITY &&
-	   purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3") != SORT_METHOD_PRIORITY) return;
-	
-	priority = purple_blist_node_get_int(node, "extended_sort_method_priority");
-	
-	
-	if(priority == PRIORITY_VERY_HIGH) {
-		// Disabled Menu Entry
-		callback=NULL;
-	} else {
-		callback=buddy_set_priority_cb;
+
+	if(
+		!PURPLE_BLIST_NODE_IS_CONTACT(node) &&
+		!PURPLE_BLIST_NODE_IS_BUDDY(node) &&
+		!PURPLE_BLIST_NODE_IS_CHAT(node)
+	) {
+		return;
 	}
-	submenu = g_list_append(submenu, purple_menu_action_new(_("Very High"), PURPLE_CALLBACK(callback), GINT_TO_POINTER(PRIORITY_VERY_HIGH), NULL));
-	
-	if(priority == PRIORITY_HIGH) {
-		callback=NULL;
-	} else {
-		callback=buddy_set_priority_cb;
+
+	if(purple_blist_node_get_flags(node) & PURPLE_BLIST_NODE_FLAG_NO_SAVE) {
+		return;
 	}
-	submenu = g_list_append(submenu, purple_menu_action_new(_("High"), PURPLE_CALLBACK(callback), GINT_TO_POINTER(PRIORITY_HIGH), NULL));
-	
-	if(priority == PRIORITY_NORMAL || priority == PRIORITY_UNDEFINED) {
-		callback=NULL;
-	} else {
-		callback=buddy_set_priority_cb;
+
+	if(
+		purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1") != SORT_METHOD_PRIORITY &&
+		purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2") != SORT_METHOD_PRIORITY &&
+		purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3") != SORT_METHOD_PRIORITY
+	) {
+		return;
 	}
-	submenu = g_list_append(submenu, purple_menu_action_new(_("Normal"), PURPLE_CALLBACK(callback), GINT_TO_POINTER(PRIORITY_NORMAL), NULL));
-	
-	if(priority == PRIORITY_LOW) {
-		callback=NULL;
-	} else {
-		callback=buddy_set_priority_cb;
-	}
-	submenu = g_list_append(submenu, purple_menu_action_new(_("Low"), PURPLE_CALLBACK(callback), GINT_TO_POINTER(PRIORITY_LOW), NULL));
-	
-	if(priority == PRIORITY_VERY_LOW) {
-		callback=NULL;
-	} else {
-		callback=buddy_set_priority_cb;
-	}
-	submenu = g_list_append(submenu, purple_menu_action_new(_("Very Low"), PURPLE_CALLBACK(callback), GINT_TO_POINTER(PRIORITY_VERY_LOW), NULL));
-	
-	
+
+	submenu = menu_append(submenu, node, PRIORITY_VERY_HIGH, _("Very High"));
+	submenu = menu_append(submenu, node, PRIORITY_HIGH, _("High"));
+	submenu = menu_append(submenu, node, PRIORITY_NORMAL, _("Normal"));
+	submenu = menu_append(submenu, node, PRIORITY_LOW, _("Low"));
+	submenu = menu_append(submenu, node, PRIORITY_VERY_LOW, _("Very Low"));
+
 	action = purple_menu_action_new(_("Set Priority"), NULL, NULL, submenu);
 	*menu = g_list_append(*menu, action);
 }
 
 void init_extended_menu(void) {
-	purple_signal_connect(purple_blist_get_handle(), "blist-node-extended-menu", plugin, PURPLE_CALLBACK(extended_buddy_menu_cb), NULL);
-	
+	purple_signal_connect(
+		purple_blist_get_handle(), "blist-node-extended-menu",
+		plugin, PURPLE_CALLBACK(extended_buddy_menu_cb), NULL
+	);
 }
