@@ -40,7 +40,7 @@ $(PLUGIN_WIN32_ZIP): build
 		lang=$$(basename $$f .po) || exit 1; \
 		mkdir -p win32-install-dir/locale/$${lang}/LC_MESSAGES || exit 1; \
 		cp po/$${lang}.gmo \
-			win32-install-dir/locale/$${lang}/LC_MESSAGES/pidgin-birthday-reminder.mo || exit 1;  \
+			win32-install-dir/locale/$${lang}/LC_MESSAGES/pidgin-extended-blist-sort.mo || exit 1;  \
 	done
 	rm -f $(PLUGIN_WIN32_ZIP)
 	cd win32-install-dir && \
