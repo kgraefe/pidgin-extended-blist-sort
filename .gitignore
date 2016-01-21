@@ -17,6 +17,8 @@
 /src/.libs
 /m4/
 /win32-install-dir
+/share/appdata/pidgin-extended-blist-sort.metainfo.xml
+/po/.intltool-merge-cache
 
 
 Makefile
