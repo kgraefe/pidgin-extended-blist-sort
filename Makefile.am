@@ -15,4 +15,4 @@ EXTRA_DIST = \
 	src/plugin_actions.h \
 	src/tooltip.h
 
-SUBDIRS = src po
+SUBDIRS = src po share

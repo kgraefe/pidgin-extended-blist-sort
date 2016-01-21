@@ -5,3 +5,4 @@ src/sort_methods.c
 src/tooltip.c
 src/pidgin_internals.c
 src/plugin_actions.c
+share/appdata/pidgin-extended-blist-sort.metainfo.xml.in

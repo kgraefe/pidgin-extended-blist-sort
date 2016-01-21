@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+	<id>pidgin-extended-blist-sort</id>
+	<extends>pidgin.desktop</extends>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-2.0</project_license>
+
+	<name>Extended Buddy List Sort</name>
+	<updatecontact>konradgraefe@aol.com</updatecontact>
+
+	<_summary>Pidgin Extended Buddy List Sort</_summary>
+	<description>
+		<_p>
+			This Plugin allows you to sort your buddy list more flexible than Pidgin does.
+		</_p>
+	</description>
+	<url type="homepage">https://github.com/kgraefe/pidgin-extended-blist-sort</url>
+	<url type="bugtracker">https://github.com/kgraefe/pidgin-extended-blist-sort/issues</url>
+</component>
+
