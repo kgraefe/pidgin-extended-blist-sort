@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pidgin-extended-blist-sort\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-28 05:51+0000\n"
+"POT-Creation-Date: 2016-01-21 10:30+0100\n"
 "PO-Revision-Date: 2010-10-27 07:50+0000\n"
 "Last-Translator: Ushakov Maxim <msincster@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-04-29 06:24+0000\n"
 "X-Generator: Launchpad (build 16985)\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:52
-#: ../src/sort_methods.c:404
+#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55 ../src/sort_methods.c:518
 msgid "Extended BList Sort"
 msgstr "Расширенная сортировка списка собеседников"
 
@@ -30,32 +30,32 @@ msgstr ""
 "Этот модуль позволяет вам более гибко настроить сортировку вашего списка "
 "собеседников."
 
-#: ../src/extended_menu.c:61 ../src/tooltip.c:48
+#: ../src/extended_menu.c:81 ../src/tooltip.c:59
 msgid "Very High"
 msgstr "Очень высокий"
 
-#: ../src/extended_menu.c:68 ../src/tooltip.c:47
+#: ../src/extended_menu.c:82 ../src/tooltip.c:56
 msgid "High"
 msgstr "Высокий"
 
-#: ../src/extended_menu.c:75
+#: ../src/extended_menu.c:83
 msgid "Normal"
 msgstr "Нормальный"
 
-#: ../src/extended_menu.c:82 ../src/tooltip.c:45
+#: ../src/extended_menu.c:84 ../src/tooltip.c:53
 msgid "Low"
 msgstr "Низкий"
 
-#: ../src/extended_menu.c:89 ../src/tooltip.c:44
+#: ../src/extended_menu.c:85 ../src/tooltip.c:50
 msgid "Very Low"
 msgstr "Очень низкий"
 
-#: ../src/extended_menu.c:92
+#: ../src/extended_menu.c:87
 msgid "Set Priority"
 msgstr "Задать приоритет"
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:55
+#: ../src/prefs.c:61
 msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
@@ -65,7 +65,7 @@ msgstr ""
 ">Управление учетными записями</b>."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:58
+#: ../src/prefs.c:69
 msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
@@ -74,70 +74,70 @@ msgstr ""
 "меню <b>Инструменты->Расширенная сортировка BList->Обновить</b> для "
 "обновления списка собеседников."
 
-#: ../src/prefs.c:167
+#: ../src/prefs.c:180
 msgid "(Nothing)"
 msgstr "(Ничего)"
 
-#: ../src/prefs.c:173
+#: ../src/prefs.c:186
 msgid "Log Size"
 msgstr "Размер журнала"
 
-#: ../src/prefs.c:179
+#: ../src/prefs.c:192
 msgid "Name"
 msgstr "Имя"
 
-#: ../src/prefs.c:185
+#: ../src/prefs.c:198
 msgid "Last Name"
 msgstr ""
 
-#: ../src/prefs.c:191
+#: ../src/prefs.c:204
 msgid "Online/Offline"
 msgstr "В сети/Не в сети"
 
-#: ../src/prefs.c:197
+#: ../src/prefs.c:210
 msgid "On-/Offline Time"
 msgstr "Время в сети/не в сети"
 
-#: ../src/prefs.c:203
+#: ../src/prefs.c:216
 msgid "Priority"
 msgstr "Приоритет"
 
-#: ../src/prefs.c:209
+#: ../src/prefs.c:222
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../src/prefs.c:215
+#: ../src/prefs.c:228
 msgid "Account"
 msgstr "Учетная запись"
 
-#: ../src/prefs.c:221
+#: ../src/prefs.c:234
 msgid "Status"
 msgstr "Статус"
 
-#: ../src/prefs.c:229
+#: ../src/prefs.c:242
 msgid "Choose your way to sort the Buddy List:"
 msgstr "Выберите способ сортировки списка собеседников:"
 
-#. erste Sortierung
-#: ../src/prefs.c:241
+#. First sort option
+#: ../src/prefs.c:254
 msgid "First:"
 msgstr "Первое:"
 
-#: ../src/prefs.c:257 ../src/prefs.c:290 ../src/prefs.c:322
+#: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
 msgid "Reverse"
 msgstr "В обратном порядке"
 
-#. zweite Sortierung
-#: ../src/prefs.c:274
+#. Second sort option
+#: ../src/prefs.c:287
 msgid "Second:"
 msgstr "Второе:"
 
-#. dritte Sortierung
-#: ../src/prefs.c:306
+#. Third sort option
+#: ../src/prefs.c:319
 msgid "Last:"
 msgstr "Последнее:"
 
-#: ../src/tooltip.c:50
+#: ../src/tooltip.c:67
 #, c-format
 msgid ""
 "\n"

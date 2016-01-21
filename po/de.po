@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-28 05:51+0000\n"
+"POT-Creation-Date: 2016-01-21 10:30+0100\n"
 "PO-Revision-Date: 2013-11-21 23:36+0000\n"
 "Last-Translator: kgraefe <Unknown>\n"
 "Language-Team: German <freakazoid@teamblind.de>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-04-29 06:24+0000\n"
 "X-Generator: Launchpad (build 16985)\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:52
-#: ../src/sort_methods.c:404
+#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55 ../src/sort_methods.c:518
 msgid "Extended BList Sort"
 msgstr "Erweiterte Sortierung der Buddy-Liste"
 
@@ -29,32 +29,32 @@ msgid ""
 msgstr ""
 "Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
 
-#: ../src/extended_menu.c:61 ../src/tooltip.c:48
+#: ../src/extended_menu.c:81 ../src/tooltip.c:59
 msgid "Very High"
 msgstr "Sehr hoch"
 
-#: ../src/extended_menu.c:68 ../src/tooltip.c:47
+#: ../src/extended_menu.c:82 ../src/tooltip.c:56
 msgid "High"
 msgstr "Hoch"
 
-#: ../src/extended_menu.c:75
+#: ../src/extended_menu.c:83
 msgid "Normal"
 msgstr "Normal"
 
-#: ../src/extended_menu.c:82 ../src/tooltip.c:45
+#: ../src/extended_menu.c:84 ../src/tooltip.c:53
 msgid "Low"
 msgstr "Niedrig"
 
-#: ../src/extended_menu.c:89 ../src/tooltip.c:44
+#: ../src/extended_menu.c:85 ../src/tooltip.c:50
 msgid "Very Low"
 msgstr "Sehr niedrig"
 
-#: ../src/extended_menu.c:92
+#: ../src/extended_menu.c:87
 msgid "Set Priority"
 msgstr "Setze Priorität"
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:55
+#: ../src/prefs.c:61
 msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
@@ -63,7 +63,7 @@ msgstr ""
 "<b>Konten->Konten verwalten</b> umsortieren."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:58
+#: ../src/prefs.c:69
 msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
@@ -72,70 +72,70 @@ msgstr ""
 "<b>Werkzeuge->Erweiterte Sortierung der Buddy-Liste->Buddy-Liste "
 "aktualisieren</b> benutzen musst."
 
-#: ../src/prefs.c:167
+#: ../src/prefs.c:180
 msgid "(Nothing)"
 msgstr "(Nicht sortieren)"
 
-#: ../src/prefs.c:173
+#: ../src/prefs.c:186
 msgid "Log Size"
 msgstr "Größe der Log-Dateien"
 
-#: ../src/prefs.c:179
+#: ../src/prefs.c:192
 msgid "Name"
 msgstr "Name"
 
-#: ../src/prefs.c:185
+#: ../src/prefs.c:198
 msgid "Last Name"
 msgstr "Nachname"
 
-#: ../src/prefs.c:191
+#: ../src/prefs.c:204
 msgid "Online/Offline"
 msgstr "Online/Offline"
 
-#: ../src/prefs.c:197
+#: ../src/prefs.c:210
 msgid "On-/Offline Time"
 msgstr "On-/Offline-Zeit"
 
-#: ../src/prefs.c:203
+#: ../src/prefs.c:216
 msgid "Priority"
 msgstr "Priorität"
 
-#: ../src/prefs.c:209
+#: ../src/prefs.c:222
 msgid "Protocol"
 msgstr "Protokoll"
 
-#: ../src/prefs.c:215
+#: ../src/prefs.c:228
 msgid "Account"
 msgstr "Konto"
 
-#: ../src/prefs.c:221
+#: ../src/prefs.c:234
 msgid "Status"
 msgstr "Status"
 
-#: ../src/prefs.c:229
+#: ../src/prefs.c:242
 msgid "Choose your way to sort the Buddy List:"
 msgstr "Wie möchten Sie sortieren?"
 
-#. erste Sortierung
-#: ../src/prefs.c:241
+#. First sort option
+#: ../src/prefs.c:254
 msgid "First:"
 msgstr "Zu Erst:"
 
-#: ../src/prefs.c:257 ../src/prefs.c:290 ../src/prefs.c:322
+#: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
 msgid "Reverse"
 msgstr "Rückwärts"
 
-#. zweite Sortierung
-#: ../src/prefs.c:274
+#. Second sort option
+#: ../src/prefs.c:287
 msgid "Second:"
 msgstr "Danach:"
 
-#. dritte Sortierung
-#: ../src/prefs.c:306
+#. Third sort option
+#: ../src/prefs.c:319
 msgid "Last:"
 msgstr "Zu Letzt:"
 
-#: ../src/tooltip.c:50
+#: ../src/tooltip.c:67
 #, c-format
 msgid ""
 "\n"

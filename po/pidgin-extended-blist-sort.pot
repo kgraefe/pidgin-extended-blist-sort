@@ -1,58 +1,55 @@
-# Norwegian Bokmal translation for pidgin-extended-blist-sort
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
-# This file is distributed under the same license as the pidgin-extended-blist-sort package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pidgin-extended-blist-sort\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-21 10:30+0100\n"
-"PO-Revision-Date: 2010-06-11 04:46+0000\n"
-"Last-Translator: Espen Krømke <beamboom@gmail.com>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
-"Language: nb\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-29 06:24+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
 
 #: ../src/extended_blist_sort.c:113 ../src/prefs.c:55 ../src/sort_methods.c:518
 msgid "Extended BList Sort"
-msgstr "Utvidet BListesortering"
+msgstr ""
 
 #: ../src/extended_blist_sort.c:114 ../src/extended_blist_sort.c:115
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
 msgstr ""
-"Dette programtillegget lar deg sortere kompislista mer fleksibelt enn i "
-"pidgin."
 
 #: ../src/extended_menu.c:81 ../src/tooltip.c:59
 msgid "Very High"
-msgstr "Veldig høy"
+msgstr ""
 
 #: ../src/extended_menu.c:82 ../src/tooltip.c:56
 msgid "High"
-msgstr "Høy"
+msgstr ""
 
 #: ../src/extended_menu.c:83
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #: ../src/extended_menu.c:84 ../src/tooltip.c:53
 msgid "Low"
-msgstr "Lav"
+msgstr ""
 
 #: ../src/extended_menu.c:85 ../src/tooltip.c:50
 msgid "Very Low"
-msgstr "Veldig lav"
+msgstr ""
 
 #: ../src/extended_menu.c:87
 msgid "Set Priority"
-msgstr "Legg inn prioritet"
+msgstr ""
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
 #: ../src/prefs.c:61
@@ -60,8 +57,6 @@ msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
 msgstr ""
-"Du kan endre rekkefølgen på kontoene med musen i <b>Kontoer</b>-vinduet "
-"under <b>Kontoer -> Administrer Kontoer</b>."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
 #: ../src/prefs.c:69
@@ -69,20 +64,18 @@ msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
 msgstr ""
-"Vær oppmerksom på at utvidelsen ikke gjengkjenner denne endringen, du må "
-"bruke <b>Verktøy->Utvidet vennesortering -> Oppdater</b>"
 
 #: ../src/prefs.c:180
 msgid "(Nothing)"
-msgstr "(Ingenting)"
+msgstr ""
 
 #: ../src/prefs.c:186
 msgid "Log Size"
-msgstr "Loggstørrelse"
+msgstr ""
 
 #: ../src/prefs.c:192
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: ../src/prefs.c:198
 msgid "Last Name"
@@ -90,50 +83,50 @@ msgstr ""
 
 #: ../src/prefs.c:204
 msgid "Online/Offline"
-msgstr "Tilkoblet/frakoblet"
+msgstr ""
 
 #: ../src/prefs.c:210
 msgid "On-/Offline Time"
-msgstr "Fra-/Tilkoblet Tid"
+msgstr ""
 
 #: ../src/prefs.c:216
 msgid "Priority"
-msgstr "Prioritet"
+msgstr ""
 
 #: ../src/prefs.c:222
 msgid "Protocol"
-msgstr "Protokoll"
+msgstr ""
 
 #: ../src/prefs.c:228
 msgid "Account"
-msgstr "Konto"
+msgstr ""
 
 #: ../src/prefs.c:234
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #: ../src/prefs.c:242
 msgid "Choose your way to sort the Buddy List:"
-msgstr "Velg din måte å sortere Kompislista på"
+msgstr ""
 
 #. First sort option
 #: ../src/prefs.c:254
 msgid "First:"
-msgstr "Første:"
+msgstr ""
 
 #: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
 msgid "Reverse"
-msgstr "Omvendt"
+msgstr ""
 
 #. Second sort option
 #: ../src/prefs.c:287
 msgid "Second:"
-msgstr "Andre:"
+msgstr ""
 
 #. Third sort option
 #: ../src/prefs.c:319
 msgid "Last:"
-msgstr "Siste:"
+msgstr ""
 
 #: ../src/tooltip.c:67
 #, c-format
@@ -141,9 +134,7 @@ msgid ""
 "\n"
 "<b>Priority</b>: %s"
 msgstr ""
-"\n"
-"<b>Prioritet</b>: %s"
 
 #: ../src/plugin_actions.c:36
 msgid "Refresh Buddy List"
-msgstr "Oppdater vennelisten"
+msgstr ""
