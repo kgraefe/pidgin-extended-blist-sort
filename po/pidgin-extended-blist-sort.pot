@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 10:30+0100\n"
+"POT-Creation-Date: 2016-01-21 16:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55 ../src/sort_methods.c:518
+#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55
+#: ../src/sort_methods.c:518
 msgid "Extended BList Sort"
 msgstr ""
 
@@ -137,4 +138,14 @@ msgstr ""
 
 #: ../src/plugin_actions.c:36
 msgid "Refresh Buddy List"
+msgstr ""
+
+#: ../share/appdata/pidgin-extended-blist-sort.metainfo.xml.in.h:1
+msgid "Pidgin Extended Buddy List Sort"
+msgstr ""
+
+#: ../share/appdata/pidgin-extended-blist-sort.metainfo.xml.in.h:2
+msgid ""
+"This Plugin allows you to sort your buddy list more flexible than Pidgin "
+"does."
 msgstr ""
