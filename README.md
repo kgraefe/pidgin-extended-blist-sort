@@ -1,5 +1,7 @@
 # Pidgin Extended BList Sort
 
+[![Screenshot](https://cloud.githubusercontent.com/assets/3797324/12473740/4870105c-c015-11e5-95f7-c42f022e4ecb.png)](https://cloud.githubusercontent.com/assets/3797324/12473731/3a99cc20-c015-11e5-878c-acf64177a2ba.png)
+
 ## Installation on Windows
 
 For the binary version, extract all the contents of the ZIP file either to the
