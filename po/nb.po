@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin Extended Buddy List Sort\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 10:30+0100\n"
-"PO-Revision-Date: 2016-01-21 09:36+0000\n"
+"POT-Creation-Date: 2016-01-21 16:37+0100\n"
+"PO-Revision-Date: 2016-01-22 09:20+0000\n"
 "Last-Translator: Konrad Gräfe <konradgraefe@aol.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/kgraefe/pidgin-extended-blist-sort/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -142,3 +142,13 @@ msgstr "\n<b>Prioritet</b>: %s"
 #: ../src/plugin_actions.c:36
 msgid "Refresh Buddy List"
 msgstr "Oppdater vennelisten"
+
+#: ../share/appdata/pidgin-extended-blist-sort.metainfo.xml.in.h:1
+msgid "Pidgin Extended Buddy List Sort"
+msgstr ""
+
+#: ../share/appdata/pidgin-extended-blist-sort.metainfo.xml.in.h:2
+msgid ""
+"This Plugin allows you to sort your buddy list more flexible than Pidgin "
+"does."
+msgstr ""
