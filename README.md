@@ -49,3 +49,4 @@ We love patches. :heart: Please fork the project, do your changes and make a pul
 ### Translations
 Help translating this project on [Transifex](https://www.transifex.com/projects/p/pidgin-extended-blist-sort/).
 
+![Transifex Statistics](https://www.transifex.com/projects/p/pidgin-extended-blist-sort/resource/base/chart/image_png)
