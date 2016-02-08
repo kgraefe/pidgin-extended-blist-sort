@@ -8,37 +8,14 @@ AC_CONFIG_SRCDIR([src/extended_blist_sort.c])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-
-AC_DEFINE_UNQUOTED(
-	PLUGIN_VERSION,
-	["@@VERSION@@"],
-	[Define the plugin version]
-)
-AC_DEFINE_UNQUOTED(
-	PLUGIN_WEBSITE,
-	["https://github.com/kgraefe/pidgin-extended-blist-sort"],
-	[Define the plugin website]
-)
-AC_DEFINE_UNQUOTED(
-	PLUGIN_ID,
-	["gtk-freakazoid-extended-blist-sort"],
-	[Define the plugin website]
-)
-AC_DEFINE_UNQUOTED(
-	PLUGIN_STATIC_NAME,
-	["extended-blist-sort"],
-	[Define the plugin website]
-)
-AC_DEFINE_UNQUOTED(
-	PLUGIN_AUTHOR,
-	["Konrad Gräfe <konradgraefe@aol.com>"],
-	[Define the plugin author]
-)
-AC_DEFINE_UNQUOTED(
-	PLUGIN_PREFS_PREFIX,
-	["/plugins/gtk/extended_blist_sort"],
-	[Define the plugin preference path]
-)
+# Note: AC_DEFINE_UNQUOTED() needs to be in a single line in order to not
+#       break scripts/gen-mingw-config_h.sh on Windows.
+AC_DEFINE_UNQUOTED(PLUGIN_VERSION, ["@@VERSION@@"], [Define the plugin version])
+AC_DEFINE_UNQUOTED(PLUGIN_WEBSITE, ["https://github.com/kgraefe/pidgin-extended-blist-sort"], [Define the plugin website])
+AC_DEFINE_UNQUOTED(PLUGIN_ID, ["gtk-freakazoid-extended-blist-sort"], [Define the plugin website])
+AC_DEFINE_UNQUOTED(PLUGIN_STATIC_NAME, ["extended-blist-sort"], [Define the plugin website])
+AC_DEFINE_UNQUOTED(PLUGIN_AUTHOR, ["Konrad Gräfe <konradgraefe@aol.com>"], [Define the plugin author])
+AC_DEFINE_UNQUOTED(PLUGIN_PREFS_PREFIX, ["/plugins/gtk/extended_blist_sort"], [Define the plugin preference path])
 
 
 # Checks for programs.
