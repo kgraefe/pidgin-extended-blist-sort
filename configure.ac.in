@@ -12,27 +12,32 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_DEFINE_UNQUOTED(
 	PLUGIN_VERSION,
 	["@@VERSION@@"],
-	[Define the plugin version to be used]
+	[Define the plugin version]
 )
 AC_DEFINE_UNQUOTED(
 	PLUGIN_WEBSITE,
 	["https://github.com/kgraefe/pidgin-extended-blist-sort"],
-	[Define the plugin website to be used]
+	[Define the plugin website]
 )
 AC_DEFINE_UNQUOTED(
 	PLUGIN_ID,
 	["gtk-freakazoid-extended-blist-sort"],
-	[Define the plugin website to be used]
+	[Define the plugin website]
 )
 AC_DEFINE_UNQUOTED(
 	PLUGIN_STATIC_NAME,
 	["extended-blist-sort"],
-	[Define the plugin website to be used]
+	[Define the plugin website]
 )
 AC_DEFINE_UNQUOTED(
 	PLUGIN_AUTHOR,
 	["Konrad Gräfe <konradgraefe@aol.com>"],
-	[Define the plugin author to be used]
+	[Define the plugin author]
+)
+AC_DEFINE_UNQUOTED(
+	PLUGIN_PREFS_PREFIX,
+	["/plugins/gtk/extended_blist_sort"],
+	[Define the plugin preference path]
 )
 
 
@@ -42,7 +47,7 @@ AC_PROG_LIBTOOL
 AC_PROG_INTLTOOL
 GETTEXT_PACKAGE=pidgin-extended-blist-sort
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], [Define the gettext package to be used])
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], [Define the gettext package])
 ALL_LINGUAS="@@LANGUAGES@@"
 AM_GLIB_GNU_GETTEXT
 
