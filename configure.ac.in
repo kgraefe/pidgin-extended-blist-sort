@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.61)
 AC_INIT(pidgin-extended-blist-sort, @@VERSION@@, konradgraefe@aol.com)
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([1.9 foreign tar-pax])
 AC_CONFIG_SRCDIR([src/extended_blist_sort.c])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
