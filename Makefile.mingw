@@ -18,11 +18,9 @@ PIDGIN_VERSION := $(shell cat $(PIDGIN_TREE_TOP)/VERSION)
 
 PLUGIN_WIN32_ZIP := pidgin-extended-blist-sort-$(PLUGIN_VERSION)-win32.zip
 
-.PHONY: all build dist clean
+.PHONY: all dist clean
 
-all: build
-
-build: config.h
+all: config.h
 	$(MAKE) -C $(PLUGIN_SRC) -f Makefile.mingw
 	$(MAKE) -C $(PLUGIN_PO) -f Makefile.mingw
 
