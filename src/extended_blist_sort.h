@@ -27,7 +27,5 @@
 #define PURPLE_PLUGINS
 #endif
 
-#define PLUGIN_PREFS_PREFIX "/plugins/gtk/extended_blist_sort"
-
 #endif /* _EXTENDED_BLIST_SORT_H */
 

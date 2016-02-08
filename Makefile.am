@@ -5,7 +5,7 @@ EXTRA_DIST = \
 	Makefile.mingw \
 	src/Makefile.mingw \
 	po/Makefile.mingw \
-	config.h.mingw \
+	scripts/gen-mingw-config_h.sh \
 	src/extended_blist_sort.h \
 	src/extended_menu.h \
 	src/internal.h \
