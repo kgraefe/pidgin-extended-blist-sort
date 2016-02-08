@@ -6,6 +6,7 @@ EXTRA_DIST = \
 	src/Makefile.mingw \
 	po/Makefile.mingw \
 	scripts/gen-mingw-config_h.sh \
+	scripts/gen-version.sh \
 	src/extended_blist_sort.h \
 	src/extended_menu.h \
 	src/internal.h \
