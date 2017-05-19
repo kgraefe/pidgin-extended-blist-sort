@@ -1,5 +1,8 @@
 # Pidgin Extended Buddy List Sort
 
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg?style=flat)](COPYING)
+[![Download](https://img.shields.io/badge/Download-Latest_Release-brightgreen.svg?style=flat)](https://github.com/kgraefe/pidgin-extended-blist-sort/releases/latest)
+
 [![Screenshot](https://cloud.githubusercontent.com/assets/3797324/12473740/4870105c-c015-11e5-95f7-c42f022e4ecb.png)](https://cloud.githubusercontent.com/assets/3797324/12473731/3a99cc20-c015-11e5-878c-acf64177a2ba.png)
 
 ## Installation on Windows
