@@ -20,6 +20,7 @@
 /share/appdata/pidgin-extended-blist-sort.metainfo.xml
 /po/.intltool-merge-cache
 /.stamp-*
+/Makefile.am
 
 
 Makefile

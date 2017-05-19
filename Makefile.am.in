@@ -1,0 +1,12 @@
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = \
+	@@HEADERFILES@@ \
+	VERSION \
+	Makefile.mingw \
+	src/Makefile.mingw \
+	po/Makefile.mingw \
+	scripts/gen-mingw-config_h.sh \
+	scripts/gen-version.sh
+
+SUBDIRS = src po share
