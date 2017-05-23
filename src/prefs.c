@@ -158,20 +158,54 @@ void init_prefs(void) {
 	purple_prefs_connect_callback(plugin, PLUGIN_PREFS_PREFIX "/sort3_reverse", option_changed_cb, NULL);
 }
 
+static void make_pref_row(
+	GtkWidget *table, gint row, GtkListStore *model, GtkWidget **infbtn,
+	gchar *title, gchar *sort_option, gchar *reverse_option
+) {
+	GtkWidget *label, *combo, *toggle, *infobutton = NULL;
+	GtkCellRenderer *renderer = NULL;
+	GtkTreeIter iter;
+
+	label = gtk_label_new(title);
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, row, row + 1);
+
+	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
+	renderer = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
+
+	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(sort_option), &iter)) {
+		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
+	}
+	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), sort_option);
+
+	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, row, row + 1);
+
+	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(reverse_option));
+	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), reverse_option);
+	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, row + 1, row + 2);
+
+	infobutton = gtk_button_new();
+	gtk_button_set_image(GTK_BUTTON(infobutton), gtk_image_new_from_stock(GTK_STOCK_INFO, GTK_ICON_SIZE_MENU));
+	gtk_table_attach_defaults(GTK_TABLE(table), infobutton, 2, 3, row, row + 1);
+
+	g_signal_connect(G_OBJECT(infobutton), "clicked", G_CALLBACK(infobutton_clicked_cb), NULL);
+	g_signal_connect(G_OBJECT(infobutton), "show", G_CALLBACK(update_infobuttons), NULL);
+
+	*infbtn = infobutton;
+}
+
 GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	GtkWidget *ret = NULL;
 	GtkWidget *label = NULL;
 	GtkWidget *table = NULL;
-	GtkWidget *combo = NULL;
-	GtkWidget *toggle = NULL;
-	GtkWidget *infobutton = NULL;
-	GtkCellRenderer *renderer = NULL;
 	
 	GtkListStore *model = NULL;
 	GtkTreeIter iter;
 	
 	gchar *markup;
-	gint current_row = 0;
 	
 	model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT);
 	
@@ -248,104 +282,18 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	gtk_table_set_col_spacings(GTK_TABLE(table), 5);
 	gtk_container_add(GTK_CONTAINER(ret), table);
 	
-	current_row = 0;
-	
-	/* First sort option */
-	label = gtk_label_new(_("First:"));
-	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
-	
-	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
-	renderer = gtk_cell_renderer_text_new();
-	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
-	
-	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort1"), &iter)) {
-		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
-	}
-	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort1");
-	
-	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
-	
-	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort1_reverse"));
-	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort1_reverse");
-	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
-
-	infobutton = gtk_button_new();
-	gtk_button_set_image(GTK_BUTTON(infobutton), gtk_image_new_from_stock(GTK_STOCK_INFO, GTK_ICON_SIZE_MENU));
-	gtk_table_attach_defaults(GTK_TABLE(table), infobutton, 2, 3, current_row, current_row + 1);
-
-	g_signal_connect(G_OBJECT(infobutton), "clicked", G_CALLBACK(infobutton_clicked_cb), NULL);
-	g_signal_connect(G_OBJECT(infobutton), "show", G_CALLBACK(update_infobuttons), NULL);
-
-	infobuttons.infobutton1 = infobutton;
-	
-	current_row+=2;
-	
-	/* Second sort option */
-	label = gtk_label_new(_("Second:"));
-	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
-	
-	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
-	renderer = gtk_cell_renderer_text_new();
-	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
-	
-	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort2"), &iter)) {
-		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
-	}
-	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort2");
-	
-	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
-	
-	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort2_reverse"));
-	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort2_reverse");
-	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
-	
-	infobutton = gtk_button_new();
-	gtk_button_set_image(GTK_BUTTON(infobutton), gtk_image_new_from_stock(GTK_STOCK_INFO, GTK_ICON_SIZE_MENU));
-	gtk_table_attach_defaults(GTK_TABLE(table), infobutton, 2, 3, current_row, current_row + 1);
-
-	g_signal_connect(G_OBJECT(infobutton), "clicked", G_CALLBACK(infobutton_clicked_cb), NULL);
-
-	infobuttons.infobutton2 = infobutton;
-	
-	current_row+=2;
-	
-	/* Third sort option */
-	label = gtk_label_new(_("Last:"));
-	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, current_row, current_row + 1);
-	
-	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
-	renderer = gtk_cell_renderer_text_new();
-	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT(combo), renderer, "text", PREF_LIST_COL_LABEL, NULL);
-	
-	if(get_iter_by_sort_method_id(GTK_TREE_MODEL(model), purple_prefs_get_int(PLUGIN_PREFS_PREFIX "/sort3"), &iter)) {
-		gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
-	}
-	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), PLUGIN_PREFS_PREFIX "/sort3");
-	
-	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, current_row, current_row + 1);
-	
-	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(PLUGIN_PREFS_PREFIX "/sort3_reverse"));
-	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), PLUGIN_PREFS_PREFIX "/sort3_reverse");
-	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, current_row + 1, current_row + 2);
-	
-	infobutton = gtk_button_new();
-	gtk_button_set_image(GTK_BUTTON(infobutton), gtk_image_new_from_stock(GTK_STOCK_INFO, GTK_ICON_SIZE_MENU));
-	gtk_table_attach_defaults(GTK_TABLE(table), infobutton, 2, 3, current_row, current_row + 1);
-
-	g_signal_connect(G_OBJECT(infobutton), "clicked", G_CALLBACK(infobutton_clicked_cb), NULL);
-
-	infobuttons.infobutton3 = infobutton;
-	
-	current_row+=2;
+	make_pref_row(
+		table, 0, model, &infobuttons.infobutton1,
+		_("First:"), PLUGIN_PREFS_PREFIX "/sort1", PLUGIN_PREFS_PREFIX "/sort1_reverse"
+	);
+	make_pref_row(
+		table, 2, model, &infobuttons.infobutton2,
+		_("Second:"), PLUGIN_PREFS_PREFIX "/sort2", PLUGIN_PREFS_PREFIX "/sort2_reverse"
+	);
+	make_pref_row(
+		table, 4, model, &infobuttons.infobutton3,
+		_("Third:"), PLUGIN_PREFS_PREFIX "/sort3", PLUGIN_PREFS_PREFIX "/sort3_reverse"
+	);
 
 	return ret;
 }
