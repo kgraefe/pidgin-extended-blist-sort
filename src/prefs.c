@@ -167,8 +167,8 @@ static void make_pref_row(
 	GtkTreeIter iter;
 
 	label = gtk_label_new(title);
-	gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.5f);
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, row, row + 1);
+	gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
+	gtk_table_attach(GTK_TABLE(table), label, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
 	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(model));
 	renderer = gtk_cell_renderer_text_new();
@@ -180,16 +180,18 @@ static void make_pref_row(
 	}
 	g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(combo_changed_cb), sort_option);
 
-	gtk_table_attach_defaults(GTK_TABLE(table), combo, 1, 2, row, row + 1);
+	gtk_misc_set_alignment(GTK_MISC(combo), 0, 0.5);
+	gtk_table_attach(GTK_TABLE(table), combo, 1, 2, row, row + 1, GTK_FILL, 0, 0, 0);
 
 	toggle = gtk_check_button_new_with_mnemonic(_("Reverse"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggle), purple_prefs_get_bool(reverse_option));
 	g_signal_connect(G_OBJECT(toggle), "toggled", G_CALLBACK(toggle_cb), reverse_option);
-	gtk_table_attach_defaults(GTK_TABLE(table), toggle, 1, 2, row + 1, row + 2);
+	gtk_misc_set_alignment(GTK_MISC(toggle), 0, 0.5);
+	gtk_table_attach(GTK_TABLE(table), toggle, 1, 2, row + 1, row + 2, GTK_FILL, 0, 0, 0);
 
 	infobutton = gtk_button_new();
 	gtk_button_set_image(GTK_BUTTON(infobutton), gtk_image_new_from_stock(GTK_STOCK_INFO, GTK_ICON_SIZE_MENU));
-	gtk_table_attach_defaults(GTK_TABLE(table), infobutton, 2, 3, row, row + 1);
+	gtk_table_attach(GTK_TABLE(table), infobutton, 2, 3, row, row + 1, 0, 0, 0, 0);
 
 	g_signal_connect(G_OBJECT(infobutton), "clicked", G_CALLBACK(infobutton_clicked_cb), NULL);
 	g_signal_connect(G_OBJECT(infobutton), "show", G_CALLBACK(update_infobuttons), NULL);
@@ -273,14 +275,15 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	gtk_container_set_border_width(GTK_CONTAINER(ret), 12);
 	
 	label = gtk_label_new(NULL);
+	gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
 	markup = g_markup_printf_escaped("<span weight=\"bold\">%s</span>", _("Choose your way to sort the Buddy List:"));
 	gtk_label_set_markup(GTK_LABEL(label), markup);
-	gtk_container_add(GTK_CONTAINER(ret), label);
+	gtk_box_pack_start(GTK_BOX(ret), label, FALSE, FALSE, 0);
 	
 	table = gtk_table_new(3, 2, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(table), 5);
 	gtk_table_set_col_spacings(GTK_TABLE(table), 5);
-	gtk_container_add(GTK_CONTAINER(ret), table);
+	gtk_box_pack_start(GTK_BOX(ret), table, FALSE, FALSE, 0);
 	
 	make_pref_row(
 		table, 0, model, &infobuttons.infobutton1,
