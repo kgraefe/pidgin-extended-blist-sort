@@ -2,7 +2,7 @@
 
 ## Version 1.10 (in development)
 - Add Lithuanian translation
-- Ship README.md, CHANGES.md and AUTHORS.md with source tarball
+- Ship README.md, CHANGES.md, AUTHORS.md and COPYING files
 
 ## Version 1.9 (2016-02-08)
 - Update plugin author and website
