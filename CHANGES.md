@@ -1,6 +1,6 @@
 # Pidgin Extended Buddy List Sort Changes
 
-## Version 1.10 (in development)
+## Version 1.10 (2017-05-24)
 - Add Lithuanian translation
 - Ship README.md, CHANGES.md, AUTHORS.md and COPYING files
 
