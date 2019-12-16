@@ -1,145 +1,154 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Moo, 2017
+# Konrad Gräfe <konradgraefe@aol.com>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pidgin Extended Buddy List Sort\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 16:37+0100\n"
-"PO-Revision-Date: 2017-01-17 15:19+0000\n"
-"Last-Translator: Moo\n"
-"Language-Team: Lithuanian (http://www.transifex.com/kgraefe/pidgin-extended-blist-sort/language/lt/)\n"
+"POT-Creation-Date: 2019-12-16 13:38+0100\n"
+"PO-Revision-Date: 2019-12-16 14:08+0000\n"
+"Last-Translator: Konrad Gräfe <konradgraefe@aol.com>, 2019\n"
+"Language-Team: Lithuanian (https://www.transifex.com/kgraefe/teams/59206/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lt\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55
-#: ../src/sort_methods.c:518
+#: ../src/extended_blist_sort.c:100 ../src/prefs.c:42
+#: ../src/sort_methods.c:505
 msgid "Extended BList Sort"
 msgstr "Išplėstinis bičiulių sąrašo rikiavimas"
 
-#: ../src/extended_blist_sort.c:114 ../src/extended_blist_sort.c:115
+#: ../src/extended_blist_sort.c:101 ../src/extended_blist_sort.c:102
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
-msgstr "Šis papildinys leidžia jums rikiuoti savo bičiulių sąrašą lanksčiau, nei tą daro Pidgin."
+msgstr ""
+"Šis papildinys leidžia jums rikiuoti savo bičiulių sąrašą lanksčiau, nei tą "
+"daro Pidgin."
 
-#: ../src/extended_menu.c:81 ../src/tooltip.c:59
+#: ../src/extended_menu.c:68 ../src/tooltip.c:46
 msgid "Very High"
 msgstr "Labai aukšta"
 
-#: ../src/extended_menu.c:82 ../src/tooltip.c:56
+#: ../src/extended_menu.c:69 ../src/tooltip.c:43
 msgid "High"
 msgstr "Aukšta"
 
-#: ../src/extended_menu.c:83
+#: ../src/extended_menu.c:70
 msgid "Normal"
 msgstr "Normali"
 
-#: ../src/extended_menu.c:84 ../src/tooltip.c:53
+#: ../src/extended_menu.c:71 ../src/tooltip.c:40
 msgid "Low"
 msgstr "Žema"
 
-#: ../src/extended_menu.c:85 ../src/tooltip.c:50
+#: ../src/extended_menu.c:72 ../src/tooltip.c:37
 msgid "Very Low"
 msgstr "Labai žema"
 
-#: ../src/extended_menu.c:87
+#: ../src/extended_menu.c:74
 msgid "Set Priority"
 msgstr "Nustatyti pirmenybę"
 
 #. Translators: Please maintain the use of -> and <- to refer to menu
 #. hierarchy
-#: ../src/prefs.c:61
+#: ../src/prefs.c:48
 msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
-msgstr "Jūs galite keisti paskyrų tvarką vilkdami jas <b>Paskyrų</b> lange ties <b>Paskyros->Tvarkyti paskyras</b>."
+msgstr ""
+"Jūs galite keisti paskyrų tvarką vilkdami jas <b>Paskyrų</b> lange ties "
+"<b>Paskyros->Tvarkyti paskyras</b>."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu
 #. hierarchy
-#: ../src/prefs.c:69
+#: ../src/prefs.c:56
 msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
-msgstr "Prašome turėti omenyje, kad papildinys neatpažins šio pakeitimo, taigi, tam, kad iš naujo įkeltumėte bičiulių sąrašą, jums reikės naudoti <b>Įrankiai->Išplėstinis bičiulių sąrašo rikiavimas->Įkelti iš naujo</b>."
+msgstr ""
+"Prašome turėti omenyje, kad papildinys neatpažins šio pakeitimo, taigi, tam,"
+" kad iš naujo įkeltumėte bičiulių sąrašą, jums reikės naudoti "
+"<b>Įrankiai->Išplėstinis bičiulių sąrašo rikiavimas->Įkelti iš naujo</b>."
 
-#: ../src/prefs.c:180
-msgid "(Nothing)"
-msgstr "(Nieko)"
-
-#: ../src/prefs.c:186
-msgid "Log Size"
-msgstr "Žurnalo dydis"
-
-#: ../src/prefs.c:192
-msgid "Name"
-msgstr "Vardas"
-
-#: ../src/prefs.c:198
-msgid "Last Name"
-msgstr "Pavardė"
-
-#: ../src/prefs.c:204
-msgid "Online/Offline"
-msgstr "Pasiekiamas/Atsijungęs"
-
-#: ../src/prefs.c:210
-msgid "On-/Offline Time"
-msgstr "Pasiekiamumo/Atsijungimo laikas"
-
-#: ../src/prefs.c:216
-msgid "Priority"
-msgstr "Pirmenybė"
-
-#: ../src/prefs.c:222
-msgid "Protocol"
-msgstr "Protokolas"
-
-#: ../src/prefs.c:228
-msgid "Account"
-msgstr "Paskyra"
-
-#: ../src/prefs.c:234
-msgid "Status"
-msgstr "Būsena"
-
-#: ../src/prefs.c:242
-msgid "Choose your way to sort the Buddy List:"
-msgstr "Pasirinkite savo būdą kaip rikiuoti bičiulių sąrašą:"
-
-#. First sort option
-#: ../src/prefs.c:254
-msgid "First:"
-msgstr "Pirma:"
-
-#: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
+#: ../src/prefs.c:173
 msgid "Reverse"
 msgstr "Atvirkščiai"
 
-#. Second sort option
-#: ../src/prefs.c:287
+#: ../src/prefs.c:203
+msgid "(Nothing)"
+msgstr "(Nieko)"
+
+#: ../src/prefs.c:209
+msgid "Log Size"
+msgstr "Žurnalo dydis"
+
+#: ../src/prefs.c:215
+msgid "Name"
+msgstr "Vardas"
+
+#: ../src/prefs.c:221
+msgid "Last Name"
+msgstr "Pavardė"
+
+#: ../src/prefs.c:227
+msgid "Online/Offline"
+msgstr "Pasiekiamas/Atsijungęs"
+
+#: ../src/prefs.c:233
+msgid "On-/Offline Time"
+msgstr "Pasiekiamumo/Atsijungimo laikas"
+
+#: ../src/prefs.c:239
+msgid "Priority"
+msgstr "Pirmenybė"
+
+#: ../src/prefs.c:245
+msgid "Protocol"
+msgstr "Protokolas"
+
+#: ../src/prefs.c:251
+msgid "Account"
+msgstr "Paskyra"
+
+#: ../src/prefs.c:257
+msgid "Status"
+msgstr "Būsena"
+
+#: ../src/prefs.c:266
+msgid "Choose your way to sort the Buddy List:"
+msgstr "Pasirinkite savo būdą kaip rikiuoti bičiulių sąrašą:"
+
+#: ../src/prefs.c:277
+msgid "First:"
+msgstr "Pirma:"
+
+#: ../src/prefs.c:281
 msgid "Second:"
 msgstr "Antra:"
 
-#. Third sort option
-#: ../src/prefs.c:319
+#: ../src/prefs.c:285
 msgid "Last:"
 msgstr "Paskutinė:"
 
-#: ../src/tooltip.c:67
+#: ../src/tooltip.c:54
 #, c-format
 msgid ""
 "\n"
 "<b>Priority</b>: %s"
-msgstr "\n<b>Pirmenybė</b>: %s"
+msgstr ""
+"\n"
+"<b>Pirmenybė</b>: %s"
 
-#: ../src/plugin_actions.c:36
+#: ../src/plugin_actions.c:23
 msgid "Refresh Buddy List"
 msgstr "Iš naujo įkelti bičiulių sąrašą"
 
@@ -151,4 +160,6 @@ msgstr "Pidgin išplėstinis bičiulių sąrašo rikiavimas"
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than Pidgin "
 "does."
-msgstr "Šis papildinys leidžia jums rikiuoti savo bičiulių sąrašą lanksčiau, nei tą daro Pidgin."
+msgstr ""
+"Šis papildinys leidžia jums rikiuoti savo bičiulių sąrašą lanksčiau, nei tą "
+"daro Pidgin."
