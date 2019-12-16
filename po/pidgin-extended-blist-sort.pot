@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 16:37+0100\n"
+"POT-Creation-Date: 2019-12-16 13:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,126 +17,122 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55
-#: ../src/sort_methods.c:518
+#: ../src/extended_blist_sort.c:100 ../src/prefs.c:42 ../src/sort_methods.c:505
 msgid "Extended BList Sort"
 msgstr ""
 
-#: ../src/extended_blist_sort.c:114 ../src/extended_blist_sort.c:115
+#: ../src/extended_blist_sort.c:101 ../src/extended_blist_sort.c:102
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
 msgstr ""
 
-#: ../src/extended_menu.c:81 ../src/tooltip.c:59
+#: ../src/extended_menu.c:68 ../src/tooltip.c:46
 msgid "Very High"
 msgstr ""
 
-#: ../src/extended_menu.c:82 ../src/tooltip.c:56
+#: ../src/extended_menu.c:69 ../src/tooltip.c:43
 msgid "High"
 msgstr ""
 
-#: ../src/extended_menu.c:83
+#: ../src/extended_menu.c:70
 msgid "Normal"
 msgstr ""
 
-#: ../src/extended_menu.c:84 ../src/tooltip.c:53
+#: ../src/extended_menu.c:71 ../src/tooltip.c:40
 msgid "Low"
 msgstr ""
 
-#: ../src/extended_menu.c:85 ../src/tooltip.c:50
+#: ../src/extended_menu.c:72 ../src/tooltip.c:37
 msgid "Very Low"
 msgstr ""
 
-#: ../src/extended_menu.c:87
+#: ../src/extended_menu.c:74
 msgid "Set Priority"
 msgstr ""
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:61
+#: ../src/prefs.c:48
 msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
 msgstr ""
 
 #. Translators: Please maintain the use of -> and <- to refer to menu hierarchy
-#: ../src/prefs.c:69
+#: ../src/prefs.c:56
 msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
 msgstr ""
 
-#: ../src/prefs.c:180
-msgid "(Nothing)"
-msgstr ""
-
-#: ../src/prefs.c:186
-msgid "Log Size"
-msgstr ""
-
-#: ../src/prefs.c:192
-msgid "Name"
-msgstr ""
-
-#: ../src/prefs.c:198
-msgid "Last Name"
-msgstr ""
-
-#: ../src/prefs.c:204
-msgid "Online/Offline"
-msgstr ""
-
-#: ../src/prefs.c:210
-msgid "On-/Offline Time"
-msgstr ""
-
-#: ../src/prefs.c:216
-msgid "Priority"
-msgstr ""
-
-#: ../src/prefs.c:222
-msgid "Protocol"
-msgstr ""
-
-#: ../src/prefs.c:228
-msgid "Account"
-msgstr ""
-
-#: ../src/prefs.c:234
-msgid "Status"
-msgstr ""
-
-#: ../src/prefs.c:242
-msgid "Choose your way to sort the Buddy List:"
-msgstr ""
-
-#. First sort option
-#: ../src/prefs.c:254
-msgid "First:"
-msgstr ""
-
-#: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
+#: ../src/prefs.c:173
 msgid "Reverse"
 msgstr ""
 
-#. Second sort option
-#: ../src/prefs.c:287
+#: ../src/prefs.c:203
+msgid "(Nothing)"
+msgstr ""
+
+#: ../src/prefs.c:209
+msgid "Log Size"
+msgstr ""
+
+#: ../src/prefs.c:215
+msgid "Name"
+msgstr ""
+
+#: ../src/prefs.c:221
+msgid "Last Name"
+msgstr ""
+
+#: ../src/prefs.c:227
+msgid "Online/Offline"
+msgstr ""
+
+#: ../src/prefs.c:233
+msgid "On-/Offline Time"
+msgstr ""
+
+#: ../src/prefs.c:239
+msgid "Priority"
+msgstr ""
+
+#: ../src/prefs.c:245
+msgid "Protocol"
+msgstr ""
+
+#: ../src/prefs.c:251
+msgid "Account"
+msgstr ""
+
+#: ../src/prefs.c:257
+msgid "Status"
+msgstr ""
+
+#: ../src/prefs.c:266
+msgid "Choose your way to sort the Buddy List:"
+msgstr ""
+
+#: ../src/prefs.c:277
+msgid "First:"
+msgstr ""
+
+#: ../src/prefs.c:281
 msgid "Second:"
 msgstr ""
 
-#. Third sort option
-#: ../src/prefs.c:319
+#: ../src/prefs.c:285
 msgid "Last:"
 msgstr ""
 
-#: ../src/tooltip.c:67
+#: ../src/tooltip.c:54
 #, c-format
 msgid ""
 "\n"
 "<b>Priority</b>: %s"
 msgstr ""
 
-#: ../src/plugin_actions.c:36
+#: ../src/plugin_actions.c:23
 msgid "Refresh Buddy List"
 msgstr ""
 
