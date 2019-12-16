@@ -1,146 +1,153 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Konrad Gräfe <freakazoid@teamblind.de>, 2008
-# Mario Siegmann <mario_siegmann@web.de>, 2016
+# Konrad Gräfe <konradgraefe@aol.com>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pidgin Extended Buddy List Sort\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 16:37+0100\n"
-"PO-Revision-Date: 2016-01-25 13:29+0000\n"
-"Last-Translator: Konrad Gräfe <konradgraefe@aol.com>\n"
-"Language-Team: German (http://www.transifex.com/kgraefe/pidgin-extended-blist-sort/language/de/)\n"
+"POT-Creation-Date: 2019-12-16 13:38+0100\n"
+"PO-Revision-Date: 2019-12-16 14:08+0000\n"
+"Last-Translator: Konrad Gräfe <konradgraefe@aol.com>, 2019\n"
+"Language-Team: German (https://www.transifex.com/kgraefe/teams/59206/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/extended_blist_sort.c:113 ../src/prefs.c:55
-#: ../src/sort_methods.c:518
+#: ../src/extended_blist_sort.c:100 ../src/prefs.c:42
+#: ../src/sort_methods.c:505
 msgid "Extended BList Sort"
 msgstr "Erweiterte Sortierung der Buddy-Liste"
 
-#: ../src/extended_blist_sort.c:114 ../src/extended_blist_sort.c:115
+#: ../src/extended_blist_sort.c:101 ../src/extended_blist_sort.c:102
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than pidgin "
 "does."
-msgstr "Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
+msgstr ""
+"Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
 
-#: ../src/extended_menu.c:81 ../src/tooltip.c:59
+#: ../src/extended_menu.c:68 ../src/tooltip.c:46
 msgid "Very High"
 msgstr "Sehr hoch"
 
-#: ../src/extended_menu.c:82 ../src/tooltip.c:56
+#: ../src/extended_menu.c:69 ../src/tooltip.c:43
 msgid "High"
 msgstr "Hoch"
 
-#: ../src/extended_menu.c:83
+#: ../src/extended_menu.c:70
 msgid "Normal"
 msgstr "Normal"
 
-#: ../src/extended_menu.c:84 ../src/tooltip.c:53
+#: ../src/extended_menu.c:71 ../src/tooltip.c:40
 msgid "Low"
 msgstr "Niedrig"
 
-#: ../src/extended_menu.c:85 ../src/tooltip.c:50
+#: ../src/extended_menu.c:72 ../src/tooltip.c:37
 msgid "Very Low"
 msgstr "Sehr niedrig"
 
-#: ../src/extended_menu.c:87
+#: ../src/extended_menu.c:74
 msgid "Set Priority"
 msgstr "Setze Priorität"
 
 #. Translators: Please maintain the use of -> and <- to refer to menu
 #. hierarchy
-#: ../src/prefs.c:61
+#: ../src/prefs.c:48
 msgid ""
 "You can reorder the accounts using drag and drop in the <b>Accounts</b> "
 "window at <b>Accounts->Manage Accounts</b>."
-msgstr "Du kannst die Konten via Drag&amp;Drop im <b>Konten</b>-Fenster unter <b>Konten->Konten verwalten</b> umsortieren."
+msgstr ""
+"Du kannst die Konten via Drag&amp;Drop im <b>Konten</b>-Fenster unter "
+"<b>Konten->Konten verwalten</b> umsortieren."
 
 #. Translators: Please maintain the use of -> and <- to refer to menu
 #. hierarchy
-#: ../src/prefs.c:69
+#: ../src/prefs.c:56
 msgid ""
 "Please note that the plugin wont recognize this change so that you have to "
 "use <b>Tools->Extended BList Sort->Refresh</b> to refresh the buddy list."
-msgstr "Bitte beachte, dass das Plugin die Veränderung nicht mitbekommt, sodass du <b>Werkzeuge->Erweiterte Sortierung der Buddy-Liste->Buddy-Liste aktualisieren</b> benutzen musst."
+msgstr ""
+"Bitte beachte, dass das Plugin die Veränderung nicht mitbekommt, sodass du "
+"<b>Werkzeuge->Erweiterte Sortierung der Buddy-Liste->Buddy-Liste "
+"aktualisieren</b> benutzen musst."
 
-#: ../src/prefs.c:180
-msgid "(Nothing)"
-msgstr "(Nicht sortieren)"
-
-#: ../src/prefs.c:186
-msgid "Log Size"
-msgstr "Größe der Log-Dateien"
-
-#: ../src/prefs.c:192
-msgid "Name"
-msgstr "Name"
-
-#: ../src/prefs.c:198
-msgid "Last Name"
-msgstr "Nachname"
-
-#: ../src/prefs.c:204
-msgid "Online/Offline"
-msgstr "Online/Offline"
-
-#: ../src/prefs.c:210
-msgid "On-/Offline Time"
-msgstr "On-/Offline-Zeit"
-
-#: ../src/prefs.c:216
-msgid "Priority"
-msgstr "Priorität"
-
-#: ../src/prefs.c:222
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: ../src/prefs.c:228
-msgid "Account"
-msgstr "Konto"
-
-#: ../src/prefs.c:234
-msgid "Status"
-msgstr "Status"
-
-#: ../src/prefs.c:242
-msgid "Choose your way to sort the Buddy List:"
-msgstr "Wie möchten Sie sortieren?"
-
-#. First sort option
-#: ../src/prefs.c:254
-msgid "First:"
-msgstr "Zu Erst:"
-
-#: ../src/prefs.c:270 ../src/prefs.c:303 ../src/prefs.c:335
+#: ../src/prefs.c:173
 msgid "Reverse"
 msgstr "Rückwärts"
 
-#. Second sort option
-#: ../src/prefs.c:287
+#: ../src/prefs.c:203
+msgid "(Nothing)"
+msgstr "(Nicht sortieren)"
+
+#: ../src/prefs.c:209
+msgid "Log Size"
+msgstr "Größe der Log-Dateien"
+
+#: ../src/prefs.c:215
+msgid "Name"
+msgstr "Name"
+
+#: ../src/prefs.c:221
+msgid "Last Name"
+msgstr "Nachname"
+
+#: ../src/prefs.c:227
+msgid "Online/Offline"
+msgstr "Online/Offline"
+
+#: ../src/prefs.c:233
+msgid "On-/Offline Time"
+msgstr "On-/Offline-Zeit"
+
+#: ../src/prefs.c:239
+msgid "Priority"
+msgstr "Priorität"
+
+#: ../src/prefs.c:245
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: ../src/prefs.c:251
+msgid "Account"
+msgstr "Konto"
+
+#: ../src/prefs.c:257
+msgid "Status"
+msgstr "Status"
+
+#: ../src/prefs.c:266
+msgid "Choose your way to sort the Buddy List:"
+msgstr "Wie möchten Sie sortieren?"
+
+#: ../src/prefs.c:277
+msgid "First:"
+msgstr "Zu Erst:"
+
+#: ../src/prefs.c:281
 msgid "Second:"
 msgstr "Danach:"
 
-#. Third sort option
-#: ../src/prefs.c:319
+#: ../src/prefs.c:285
 msgid "Last:"
 msgstr "Zu Letzt:"
 
-#: ../src/tooltip.c:67
+#: ../src/tooltip.c:54
 #, c-format
 msgid ""
 "\n"
 "<b>Priority</b>: %s"
-msgstr "\n<b>Priorität</b>: %s"
+msgstr ""
+"\n"
+"<b>Priorität</b>: %s"
 
-#: ../src/plugin_actions.c:36
+#: ../src/plugin_actions.c:23
 msgid "Refresh Buddy List"
 msgstr "Buddy-Liste aktualisieren"
 
@@ -152,4 +159,5 @@ msgstr "Pidgin Erweiterte Sortierung der Buddy-Liste"
 msgid ""
 "This Plugin allows you to sort your buddy list more flexible than Pidgin "
 "does."
-msgstr "Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
+msgstr ""
+"Dieses Plugin erlaubt es, die Buddy-Liste flexibler sortieren zu lassen."
