@@ -282,7 +282,7 @@ GtkWidget *get_pref_frame(PurplePlugin *plugin) {
 	);
 	make_pref_row(
 		table, 4, model, &infobuttons.infobutton3,
-		_("Third:"), PLUGIN_PREFS_PREFIX "/sort3", PLUGIN_PREFS_PREFIX "/sort3_reverse"
+		_("Last:"), PLUGIN_PREFS_PREFIX "/sort3", PLUGIN_PREFS_PREFIX "/sort3_reverse"
 	);
 
 	return ret;
